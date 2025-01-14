@@ -4,4 +4,4 @@ FossID는 npm, gradle, maven, pip, bundler, dotnet과 같이 널리 사용되는
 
 <figure><img src="../../.gitbook/assets/image (161).png" alt=""><figcaption></figcaption></figure>
 
-패키지 디펜던시 라이브러리 자동 식별의 절차는 [Dependency 분석](<../../project and scan/scan-1/dependency.md>)을 참조하십시오.
+패키지 디펜던시 라이브러리 자동 식별의 절차는 [Dependency 분석](../../project-and-scan/scan-1/dependency.md)을 참조하십시오.
