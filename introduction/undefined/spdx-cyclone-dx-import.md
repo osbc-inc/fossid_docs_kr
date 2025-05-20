@@ -8,4 +8,4 @@ FossID는 SPDX/CycloneDX 레포트 Import 기능을 사용하여 SPDX 레포트�
 
 <figure><img src="../../.gitbook/assets/슬라이드13.JPG" alt=""><figcaption></figcaption></figure>
 
-SPDX 레포트 Import의 절차는 [New Scan From Report](../../manual/webapp/scans/import-spdx.md)를 참조하십시오.
+SPDX 레포트 Import의 절차는 [New Scan From Report](../../manual/webapp/scans/import-spdx-cyclonedx.md)를 참조하십시오.

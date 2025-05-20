@@ -1,6 +1,6 @@
-# Import SPDX
+# Import SPDX/CycloneDX
 
-FossID는 SPDX 레포트 Import 기능을 사용하여 SPDX 레포트를 가시화할 수 있습니다.
+FossID는 SPDX/CycloneDX 레포트 Import 기능을 사용하여 SPDX/CycloneDX 레포트를 가시화할 수 있습니다.
 
 이 옵션은 User에게 'Components - Create New Components', 'Licenses - Administrate licenses' 권한이 모두 있는 경우에 허용됩니다.
 

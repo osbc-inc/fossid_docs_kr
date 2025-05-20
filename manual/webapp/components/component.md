@@ -6,4 +6,4 @@
 
 빨간색으로 표시된 Name, Version, License는 필수 기입 항목입니다.
 
-<figure><img src="../../../.gitbook/assets/image (113).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/화면 캡처 2025-05-20 140306.png" alt=""><figcaption></figcaption></figure>

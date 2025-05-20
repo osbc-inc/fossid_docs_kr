@@ -30,7 +30,7 @@
     * [승인 정책](manual/webapp/projects/undefined.md)
     * [화이트리스트](manual/webapp/projects/undefined-1.md)
   * [Scans](manual/webapp/scans/README.md)
-    * [Import SPDX](manual/webapp/scans/import-spdx.md)
+    * [Import SPDX/CycloneDX](manual/webapp/scans/import-spdx-cyclonedx.md)
   * [Components](manual/webapp/components/README.md)
     * [Component 생성](manual/webapp/components/component.md)
     * [Component intake 기능](manual/webapp/components/component-intake.md)

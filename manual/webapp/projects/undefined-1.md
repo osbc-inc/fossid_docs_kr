@@ -10,7 +10,7 @@
 
 ## 화이트리스트 규칙 생성
 
-매치율이 'partial'인 매칭 결과를 대상으로 'Add whitelisting rule'을 통해 화이트리스트 규칙을 생성할 수 있습니다.
+매치율이 '**partial**'인 매칭 결과를 대상으로 'Add whitelisting rule'을 통해 화이트리스트 규칙을 생성할 수 있습니다.
 
 <figure><img src="../../../.gitbook/assets/image (167).png" alt=""><figcaption></figcaption></figure>
 
