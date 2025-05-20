@@ -7,7 +7,8 @@ Workbench에서 생성된 CycloneDX 보고서에 취약점 악용 가능성 데�
 * CycloneDX 레포트를 import할때 VEX 정보가 자동으로 포함됩니다.
 * 레포트에 포함된 Component는 Scan내의 dependency에서 추가되므로, VEX 정보를  첨부할 수 있습니다.
   * Component는  Workbench내에 이미 생성되어 있어야하고, CPE가 할당되어있어야 합니다.
-  *
+  * Component는 import 시 생성되며 CycloneDX 리포트에 CPE 정보가 포함되어 있어야 합니다.
+  * Component의 이름과 버전을 기반으로 데이터베이스에서 일치하는 CPE를 찾을 수 있어야 합니다.
 
 
 
