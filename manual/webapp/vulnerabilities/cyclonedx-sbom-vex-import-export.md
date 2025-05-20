@@ -9,6 +9,6 @@ Workbench에서 생성된 CycloneDX 보고서에 취약점 악용 가능성 데�
   * Component는  Workbench내에 이미 생성되어 있어야하고, CPE가 할당되어있어야 합니다.
   * Component는 import 시 생성되며 CycloneDX 리포트에 CPE 정보가 포함되어 있어야 합니다.
   * Component의 이름과 버전을 기반으로 데이터베이스에서 일치하는 CPE를 찾을 수 있어야 합니다.
-
-
+  *
+* CPE가 요구되는 이유는 취약점 정보와 VEX 정보는 컴포넌트에 CPE가 할당되어 있어야만 연결될 수 있기 때문입니다.
 
