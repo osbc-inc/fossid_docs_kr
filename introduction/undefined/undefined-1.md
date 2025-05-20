@@ -1,7 +1,5 @@
-# 패키지 디펜던시 라이브러리 자동 식별
+# 라이선스 카테고리
 
-FossID는 npm, gradle, maven, pip, bundler, dotnet과 같이 널리 사용되는 패키지 매니저로부터 빌드 시 결합 사용되는 디펜던시 라이브러리들에 대해 자동으로 식별하며, 목록을 표시해주는 기능을 제공합니다. 컴포넌트명, 버전, 라이선스와 출처 정보를 제공하고 있습니다.
+약 600개 이상의 오픈소스 라이선스들의 카테고리를 정의하여 각 라이선스 별로 원문을 확인하지 않고 어떠한 성격을 가지고 있는 라이선스인지 확인할 수 있는 기능 및 데이터를 제공합니다.
 
-<figure><img src="../../.gitbook/assets/image (161).png" alt=""><figcaption></figcaption></figure>
-
-패키지 디펜던시 라이브러리 자동 식별의 절차는 [Dependency 분석](../../project-and-scan/scan-1/dependency.md)을 참조하십시오.
+<figure><img src="../../.gitbook/assets/슬라이드8.JPG" alt=""><figcaption></figcaption></figure>

@@ -2,7 +2,7 @@
 
 FossID는 다양한 방식으로 오픈소스를 탐지합니다.
 
-<figure><img src="../../.gitbook/assets/슬라이드7.JPG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/슬라이드7 (1).JPG" alt=""><figcaption></figcaption></figure>
 
 
 

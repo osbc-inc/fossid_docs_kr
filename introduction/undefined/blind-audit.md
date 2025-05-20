@@ -22,5 +22,5 @@ Blind Audit 기능의 절차는 다음과 같습니다.
 {% hint style="info" %}
 해당 기능과 관련된 자세한 내용은 하기를 참조하십시오.
 
-https://\<FOSSID\_ADDRESS>/help/en/blind-audit/index.html
+https://\<FOSSID\_ADDRESS>/help/en/blind-audit/blind-audit-scan.html
 {% endhint %}
