@@ -39,6 +39,8 @@
     * [License 생성](manual/webapp/licenses/license-1.md)
   * [Vulnerabilities](manual/webapp/vulnerabilities/README.md)
     * [취약점 악용 가능성](manual/webapp/vulnerabilities/undefined.md)
+    * [취약점 사용자 역할 및 권한](manual/webapp/vulnerabilities/undefined-1.md)
+    * [CycloneDX SBOM에서 import/export](manual/webapp/vulnerabilities/cyclonedx-sbom-import-export.md)
   * [Tools](manual/webapp/tools/README.md)
     * [Quick View](manual/webapp/tools/quick-view.md)
     * [Snippet Search](manual/webapp/tools/snippet-search.md)

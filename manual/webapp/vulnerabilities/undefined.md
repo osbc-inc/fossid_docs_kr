@@ -17,3 +17,15 @@ VEX 필드 상태, 응답 및 정당화에서 사용 가능한 값은 CycloneDX 
 
 
 ### VEX 재사용
+
+<figure><img src="../../../.gitbook/assets/화면 캡처 2025-05-20 152442.png" alt=""><figcaption></figcaption></figure>
+
+scan에서 'Reuse vex FROM Scan'을 이용해서 한 scan에서 다른 scan으로 VEX 정보를 가져와서 \
+대상 scan에서 소스 scan과 일치하는 컴포넌트 요소 및 CVE를 검색할 수 있습니다.
+
+
+
+
+
+### &#x20;<a href="#vulnerabilities-user-roles-and-permissions" id="vulnerabilities-user-roles-and-permissions"></a>
+
