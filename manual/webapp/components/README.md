@@ -4,7 +4,7 @@ FossID 웹 애플리케이션은 식별에 사용되었거나 'Add Component'를
 
 * 권한이 있는 경우, 기존 Component를 편집, 추가할 수 있습니다.
 
-<figure><img src="../../../.gitbook/assets/슬라이드22.JPG" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/슬라이드22 (1).JPG" alt=""><figcaption></figcaption></figure>
 
 ### 검색 필터링
 

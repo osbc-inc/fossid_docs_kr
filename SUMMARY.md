@@ -37,6 +37,8 @@
   * [Licenses](manual/webapp/licenses/README.md)
     * [License 카테고리](manual/webapp/licenses/license.md)
     * [License 생성](manual/webapp/licenses/license-1.md)
+  * [Vulnerabilities](manual/webapp/vulnerabilities/README.md)
+    * [취약점 악용 가능성](manual/webapp/vulnerabilities/undefined.md)
   * [Tools](manual/webapp/tools/README.md)
     * [Quick View](manual/webapp/tools/quick-view.md)
     * [Snippet Search](manual/webapp/tools/snippet-search.md)

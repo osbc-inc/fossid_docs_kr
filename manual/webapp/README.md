@@ -7,6 +7,7 @@
 * [Scans](scans/)
 * [Components](components/)
 * [Licenses](licenses/)
+* [Vulnerabilities](vulnerabilities/)
 * [Tools](tools/)
 * [Users](users/)
 * [System Utils](system-utils.md)
