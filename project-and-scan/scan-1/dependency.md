@@ -5,12 +5,12 @@ Dependency 분석 기능의 절차는 다음과 같습니다.
 1.  Scan 업로드 시 'Run dependency analysis automatically'를 체크한 후 분석하거나\
 
 
-    <figure><img src="../../.gitbook/assets/image (237).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/화면 캡처 2025-05-21 170104.png" alt=""><figcaption></figcaption></figure>
 
     Scan 완료 후 'Dependencies' 탭의 'Start dependency analysis' 버튼을 클릭합니다.\
 
 
-    <figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/화면 캡처 2025-05-21 171131.png" alt=""><figcaption></figcaption></figure>
 2. 식별 완료 후 알림이 나타나며 디펜던시 목록을 통해 컴포넌트명, 버전, 라이선스 및 출처 정보를 확인합니다.
 
 {% hint style="info" %}
