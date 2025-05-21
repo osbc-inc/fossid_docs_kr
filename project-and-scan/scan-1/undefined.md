@@ -89,13 +89,15 @@ User가 업로드한 파일의 정보를 보여줍니다.
 1.  하나의 Component 선택 시 우측 하단에 매칭되는 오픈소스 소스코드가 나타나며, 'Use As Identification' 버튼을 클릭합니다.\
 
 
-    <figure><img src="../../.gitbook/assets/image (215).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/화면 캡처 2025-05-21 160045.png" alt=""><figcaption></figcaption></figure>
 2.  'Assign Components' 창에 선택한 오픈소스 Component가 나타나며, 'Identified' 클릭 시 검증이 저장됩니다. (기존 검증 내용이 있을 시) 'Identifications have been found for this item in other scans' 버튼 클릭 시에는 다른 Scan에서 진행된 검증 결과를 사용할 수 있습니다.
 
 
 
-    <figure><img src="../../.gitbook/assets/image (233).png" alt=""><figcaption></figcaption></figure>
-3. 오픈소스 매칭 목록 내 원하는 Component가 없는 경우, 'Assign component'에 Component를 검색하거나 생성할 수 있습니다.
+    <figure><img src="../../.gitbook/assets/화면 캡처 2025-05-21 160510.png" alt=""><figcaption></figcaption></figure>
+3. 오픈소스 매칭 목록 내 원하는 Component가 없는 경우, \
+   'Assign component'에 Component를 검색하거나 생성할 수 있습니다.\
+
    1.  Component 검색 : 오픈소스의 Name, Version을 입력하여 기존에 존재하는 Component를 검색합니다.\
 
 
@@ -108,7 +110,7 @@ User가 업로드한 파일의 정보를 보여줍니다.
 
 
 
-    <figure><img src="../../.gitbook/assets/image (207).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/화면 캡처 2025-05-21 160642.png" alt=""><figcaption></figcaption></figure>
 
 ### 검증 결과 되돌리기
 
@@ -118,8 +120,8 @@ User가 업로드한 파일의 정보를 보여줍니다.
 
 
 
-    <figure><img src="../../.gitbook/assets/image (205).png" alt=""><figcaption></figcaption></figure>
-2.  'Identified' 상태인 파일을 다시 'Pending id' 상태로 되돌리고자 할 경우, 'Identified'를 클릭합니다.\
+    <figure><img src="../../.gitbook/assets/화면 캡처 2025-05-21 160850.png" alt=""><figcaption></figcaption></figure>
+2.  'Identified' 상태인 파일을 다시 'Pending id' 상태로 되돌리고자 할 경우, 'Identified'를 체크를 해제 합니다.\
 
 
-    <figure><img src="../../.gitbook/assets/image (213).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/화면 캡처 2025-05-21 161020.png" alt=""><figcaption></figcaption></figure>
