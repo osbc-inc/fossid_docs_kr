@@ -6,7 +6,7 @@
 
 코드트리 내에서 특정 폴더를 클릭하면 다음과 같이 나타납니다.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/화면 캡처 2025-05-21 161148.png" alt=""><figcaption></figcaption></figure>
 
 ## 폴더 단위 검증 절차
 
@@ -14,14 +14,15 @@
 
 
     <figure><img src="../../.gitbook/assets/image (235).png" alt=""><figcaption></figcaption></figure>
-2.  'Apply Folder Identification' 버튼을 클릭하여 선택한 폴더 내 파일에 식별을 적용할 수 있습니다. 또한 필터를 통해 원하는 파일에만 영향을 미치도록 할 수도 있습니다.\
+2.  'Apply Folder Identification' 버튼을 클릭하여 선택한 폴더 내 파일에 식별을 적용할 수 있습니다. \
+    또한 필터를 통해 원하는 파일에만 영향을 미치도록 할 수도 있습니다.\
 
 
-    <figure><img src="../../.gitbook/assets/image (216).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/화면 캡처 2025-05-21 161642.png" alt=""><figcaption></figcaption></figure>
 
 
 
-    <figure><img src="../../.gitbook/assets/image (231).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/화면 캡처 2025-05-21 161814.png" alt=""><figcaption></figcaption></figure>
 3.  폴더 내 파일에 식별할 Component를 'Component'에 입력한 후 선택합니다.\
 
 
