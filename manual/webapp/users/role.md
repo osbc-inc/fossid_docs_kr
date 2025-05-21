@@ -1,7 +1,7 @@
 # Role
 
 * Role을 생성하여 Permission을 설정할 수 있습니다.
-* 43개의 Permission을 통해 User 권한을 관리 및 통제할 수 있습니다.
+* 47개의 Permission을 통해 User 권한을 관리 및 통제할 수 있습니다.
 
 ## All Roles
 
