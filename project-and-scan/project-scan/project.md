@@ -8,12 +8,12 @@ Project는 Scan 그룹화, Project 접근 제어, identification 재사용 및 �
 
 ### Project 생성
 
-1.  상단의 UI에서 Projects 메뉴의 'Add New'를 클릭합니다.\
+1.  상단의 UI에서 Projects 메뉴의 'Create Project'를 클릭합니다.\
 
 
-    <figure><img src="../../.gitbook/assets/image (111).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/화면 캡처 2025-05-21 133623.png" alt=""><figcaption></figcaption></figure>
 2. Project 정보를 입력한 후 'Create' 버튼을 클릭합니다.
    *   Project Name은 필수기입 하여야 합니다.\
 
 
-       <figure><img src="../../.gitbook/assets/image (103).png" alt=""><figcaption></figcaption></figure>
+       <figure><img src="../../.gitbook/assets/화면 캡처 2025-05-21 133730.png" alt=""><figcaption></figcaption></figure>
