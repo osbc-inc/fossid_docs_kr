@@ -4,4 +4,10 @@
 
 승인 요청 생성 시, 'Manual'로 지정되어 있는 License만 Component 승인자에게 전송됩니다.
 
-<figure><img src="../../../.gitbook/assets/image (152).png" alt=""><figcaption></figcaption></figure>
+
+
+<figure><img src="../../../.gitbook/assets/화면 캡처 2025-05-21 132427.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/화면 캡처 2025-05-21 132524.png" alt=""><figcaption></figcaption></figure>
+
+자세한 내용은 [승인정책](../projects/undefined.md)에서 확인하세요.
