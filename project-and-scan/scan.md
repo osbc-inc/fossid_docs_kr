@@ -18,15 +18,11 @@
 
 
     <figure><img src="../.gitbook/assets/image (177).png" alt=""><figcaption></figcaption></figure>
-4. 다음 단계는 Scan을 수행하기 전 Scan 매개변수를 선택하는 것입니다. (선택사항)
-   * Sensitivity : Snippet이 오픈소스와 매칭되는 데 필요한 최소 라인 수입니다.
-   * Auto-Identification options : 파일 내 License 및 Copyright 문구를 추출하고 보류 중인 식별을 자동으로 해결합니다.
-   * Identification : 기존 검증 내역을 재사용할 수 있습니다.
-   * Edit Ignore Rules : Scan을 제외할 디렉토리, 파일명, 확장자명을 설정하여 Scan 대상에서 제외할 수 있습니다.
-   *   Edit String Match Rules : Scan 대상 코드에 포함된 String을 확인하기 위한 Rule을 생성할 수 있습니다.\
+4.  다음 단계는 Scan을 수행하기 전 Scan 매개변수를 선택하는 것입니다. (선택사항)
 
 
-       <figure><img src="../.gitbook/assets/화면 캡처 2025-05-21 134455.png" alt=""><figcaption></figcaption></figure>
+
+    <figure><img src="../.gitbook/assets/화면 캡처 2025-05-21 134455.png" alt=""><figcaption></figcaption></figure>
 
 \[Scan Prarmeters]
 
@@ -90,8 +86,9 @@
 
     <figure><img src="../.gitbook/assets/화면 캡처 2025-05-21 143548.png" alt=""><figcaption></figcaption></figure>
 
-1. Scan이 완료되면 다음과 같이 나타납니다.
-   *   'Start Identification' 버튼을 클릭하면 Scan 인터페이스로 이동합니다.\
+6. Scan이 완료되면 다음과 같이 나타납니다.
+
+*   'Start Identification' 버튼을 클릭하면 Scan 인터페이스로 이동합니다.\
 
 
-       <figure><img src="../.gitbook/assets/화면 캡처 2025-05-21 143630.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/화면 캡처 2025-05-21 143630.png" alt=""><figcaption></figcaption></figure>
