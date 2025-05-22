@@ -1,4 +1,4 @@
-# 23.3.x -> 25.1.0
+# 업데이트 가이드
 
 ## Workbench Server 업데이트 지침
 
@@ -77,7 +77,7 @@ ALTER TABLE "file_client_results" MODIFY "file_license" mediumtext NULL;
 
 
 
-\-----------------------------------------------------------------------------------------------------------------------
+
 
 **Debian 11 -** PHP 8.2 저장소 추가 및 설정
 
@@ -139,7 +139,7 @@ sudo yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 sudo yum install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
 ```
 
-\-----------------------------------------------------------------------------------------------------------------------
+
 
 **패키지 설치 -** PHP8.2 모듈 활성화 및 패키지 설치
 
