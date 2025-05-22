@@ -71,11 +71,11 @@
   * [보안취약점 확인](project-and-scan/scan-1/undefined-2.md)
   * [보고서 생성](project-and-scan/scan-1/undefined-3.md)
 
-## FossID 버전별 업데이트
+## FossID 업데이트
 
-* [버전별 업데이트](fossid/undefined/README.md)
-  * [업데이트 가이드](fossid/undefined/undefined/README.md)
-    * [23.3.x -> 25.1.0](fossid/undefined/undefined/23.3.x-greater-than-25.1.0.md)
-    * [24.1.x -> 25.1.0](fossid/undefined/undefined/24.1.x-greater-than-25.1.0.md)
-    * [24.2.x -> 25.1.0](fossid/undefined/undefined/24.2.x-greater-than-25.1.0.md)
-    * [24.3.x -> 25.1.0](fossid/undefined/undefined/24.3.x-greater-than-25.1.0.md)
+* [FossID 최신 버전 안내](fossid/fossid/README.md)
+  * [업데이트 가이드](fossid/fossid/undefined/README.md)
+    * [23.3.x -> 25.1.0](fossid/fossid/undefined/23.3.x-greater-than-25.1.0.md)
+    * [24.1.x -> 25.1.0](fossid/fossid/undefined/24.1.x-greater-than-25.1.0.md)
+    * [24.2.x -> 25.1.0](fossid/fossid/undefined/24.2.x-greater-than-25.1.0.md)
+    * [24.3.x -> 25.1.0](fossid/fossid/undefined/24.3.x-greater-than-25.1.0.md)
