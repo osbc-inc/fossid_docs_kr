@@ -1,26 +1,20 @@
----
-description: >-
-  선택사항: 화이트리스트(Whitelisting) 활성화 FossID 20.2 버전부터 기본적으로 화이트리스트 기능은 비활성화 상태입니다. 
-  활성화하려면 fossid.conf 파일 내 webapp_cli_command 파라미터에 --fields +mid 옵션을 추가하세요. 예: 
-  ini 복사 편집 webapp_cli_command=/fossid/bin/fos
----
-
 # 화이트리스트
 
-#### 선택사항: 화이트리스트(Whitelisting) 활성화
+#### &#x20;화이트리스트(Whitelisting) 활성화(선택사항)
 
 * FossID 20.2 버전부터 기본적으로 화이트리스트 기능은 비활성화 상태입니다.
-* 활성화하려면 `fossid.conf` 파일 내 `webapp_cli_command` 파라미터에 `--fields +mid` 옵션을 추가하세요. 예:
+* 활성화하려면 `fossid.conf` 파일 내 `webapp_cli_command` 파라미터에 `--fields +mid` 옵션을 추가하세요. 예시:
 
 ```ini
-ini복사편집webapp_cli_command=/fossid/bin/fossid-cli --config /fossid/etc/fossid.conf --fields +mid
+webapp_cli_command=/fossid/bin/fossid-cli --config /fossid/etc/fossid.conf --fields +mid
 ```
 
 * 주의: 화이트리스트 기능 활성화 이전에 스캔했던 파일은 재스캔이 필요합니다. 그래야 해당 파일에서 화이트리스트 규칙을 추가할 수 있습니다.
 
+\
 
 
-
+***
 
 
 
