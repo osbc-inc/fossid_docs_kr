@@ -19,7 +19,7 @@
 
 ### 패키지 변경 <a href="#package-changes" id="package-changes"></a>
 
-버전 23.3부터 FossID Workbench 로그를 rotate할 수 있는 기능이 추가되었습니다.
+<mark style="color:red;">버전 23.3부터</mark> FossID Workbench 로그를 rotate할 수 있는 기능이 추가되었습니다.
 
 
 
@@ -369,9 +369,9 @@ SQLSTATE[42000]: Syntax error or access violation: 1061 Duplicate key name 'uc_i
 
 
 
-* Release 20.1 버전 이전에 만들어진컴포넌트 식별을 마이그레이션 하려면 :&#x20;
-  * **20.1 이전 버전**에서는 파일당 하나의 컴포넌트만 식별 가능했으므로, 이전 데이터를 `identification_component` 테이블로 이전합니다.
-  * **24.3 버전**에서는 기존의 `identifications.component_id` 컬럼이 제거됩니다.
+* <mark style="color:red;">Release 20.1 버전 이전</mark>에 만들어진 컴포넌트 식별을 마이그레이션 하려면 :&#x20;
+  * <mark style="color:red;">**20.1 이전 버전**</mark>에서는 파일당 하나의 컴포넌트만 식별 가능했으므로, 이전 데이터를 `identification_component` 테이블로 이전합니다.
+  * <mark style="color:red;">**24.3 버전**</mark>에서는 기존의 `identifications.component_id` 컬럼이 제거됩니다.
 
 ```
 sudo -u www-data php bin/console.php migrate_legacy_identifications --auto_migrate
@@ -381,7 +381,7 @@ sudo -u www-data php bin/console.php migrate_legacy_identifications --auto_migra
 
 
 
-* 23.1.x 이전 버전에서 업그레이드 시 한 번 실행 필요 :&#x20;
+* <mark style="color:red;">23.1.x 이전 버전에서 업그레이드 시 한 번 실행 필요 :</mark>&#x20;
   * `file_client_results` 테이블을 스캔별로 분리합니다.
   * 이렇게 하면 스캔 삭제 시 해당 테이블(`file_client_results_SCAN_ID`)을 바로 삭제하여 디스크 공간을 회수할 수 있습니다.
   * 새로 생성된 테이블이 있는지 꼭 확인하세요.
@@ -468,7 +468,7 @@ php licenseupdate.php --help
   * 이미 데이터베이스에 존재하는 컴포넌트에 대해 KB에서 PURL과 CPE 정보를 채웁니다.
   * 로컬 컴포넌트 중 비어있는 CPE 필드도 함께 채워집니다.
 
-Workbench 23.1에서 PURL 필드가 추가되었습니다. Workbench 데이터베이스에 이미 있는 구성 요소의 KB에서 이 필드를 채우려면 다음 명령을 실행하세요. 또한 로컬 구성 요소의 이 필드가 비어 있는 경우 이 명령은 KB에서 CPE 정보를 채웁니다.
+<mark style="color:red;">Workbench 23.1에서 PURL 필드가 추가되었습니다</mark>. Workbench 데이터베이스에 이미 있는 구성 요소의 KB에서 이 필드를 채우려면 다음 명령을 실행하세요. 또한 로컬 구성 요소의 이 필드가 비어 있는 경우 이 명령은 KB에서 CPE 정보를 채웁니다.
 
 ```
 cd /fossid/webapp
@@ -488,7 +488,7 @@ sudo -u www-data php bin/console.php add_purl_and_cpe
 
 
 * FossID-DA 기본 도구 전환 (Workbench 24.3부터)
-  * Workbench 24.3 버전부터 FossID-DA가 기본 의존성 분석 도구로 설정되었습니다.
+  * <mark style="color:red;">Workbench 24.3 버전부터 FossID-DA가 기본 의존성 분석 도구로 설정되었습니다.</mark>
   * FossID-DA에 관한 자세한 내용은 [여기의 관련 문서 섹션을 참조하세요.](https://fossid.osbc.co.kr/help/en/fda/FossID-DA-Getting-Started.html)
 
 
@@ -528,7 +528,7 @@ sudo -u www-data php bin/console.php add_purl_and_cpe
 
 ### nginx 설정 변경 사항
 
-* 23.3.0 릴리즈에서 nginx 설정에 새로운 위치(location) 및 리라이트(rewrite)가 추가되었습니다.
+* <mark style="color:red;">23.3.0 릴리즈에서 nginx 설정에 새로운 위치(location) 및 리라이트(rewrite)가 추가되었습니다.</mark>
 * 현재 nginx 설정을 `/fossid/setup/templates/nginx.conf` 예제 파일과 비교하여 동기화하시기 바랍니다.
 
 \
@@ -607,7 +607,7 @@ sudo systemctl restart php-fpm
 
 ### 로그 회전(log rotation) 설정
 
-* FossID Workbench 23.3 버전부터 `/fossid/logs` 폴더 내 로그 파일을 회전시키기 위한 설정 파일이 추가되었습니다.
+* <mark style="color:red;">FossID Workbench 23.3 버전부터</mark> <mark style="color:red;"></mark><mark style="color:red;">`/fossid/logs`</mark> <mark style="color:red;"></mark><mark style="color:red;">폴더 내 로그 파일을 회전시키기 위한 설정 파일이 추가되었습니다.</mark>
 * 설정 파일 위치는 `/etc/logrotate.d/fossid-workbench` 입니다.
 * 필요에 따라 이 파일을 수정하여 로그 회전 정책을 조정할 수 있습니다.
 
@@ -615,7 +615,7 @@ sudo systemctl restart php-fpm
 
 ### 오래된 crontab 관련 변경 사항 <a href="#remove-old-crontab-entries" id="remove-old-crontab-entries"></a>
 
-* FossID 21.2 버전부터 백그라운드 작업(취약점 모니터링, 스캔 큐 관리 등)에 크론탭을 더 이상 사용하지 않습니다.
+* <mark style="color:red;">FossID 21.2 버전부터 백그라운드 작업(취약점 모니터링, 스캔 큐 관리 등)에 크론탭을 더 이상 사용하지 않습니다.</mark>
 * 기존에 크론탭에 관련 작업이 등록되어 있었다면 다음 명령어로 편집해서 삭제하세요:
 
 ```
@@ -638,7 +638,7 @@ sudo crontab -e
 
 ### 선택사항: 화이트리스트(Whitelisting) 활성화 <a href="#optional-whitelisting" id="optional-whitelisting"></a>
 
-* FossID 20.2 버전부터 기본적으로 화이트리스트 기능은 비활성화 상태입니다.
+* <mark style="color:red;">FossID 20.2 버전부터 기본적으로 화이트리스트 기능은 비활성화 상태입니다.</mark>
 * 활성화하려면 `fossid.conf` 파일 내 `webapp_cli_command` 파라미터에 `--fields +mid` 옵션을 추가하세요. \
   \
   예:
