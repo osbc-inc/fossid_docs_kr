@@ -76,6 +76,3 @@
 * [FossID 최신 버전 안내](fossid/fossid/README.md)
   * [업데이트 가이드](fossid/fossid/undefined/README.md)
     * [23.3.x -> 25.1.0](fossid/fossid/undefined/23.3.x-greater-than-25.1.0.md)
-    * [24.1.x -> 25.1.0](fossid/fossid/undefined/24.1.x-greater-than-25.1.0.md)
-    * [24.2.x -> 25.1.0](fossid/fossid/undefined/24.2.x-greater-than-25.1.0.md)
-    * [24.3.x -> 25.1.0](fossid/fossid/undefined/24.3.x-greater-than-25.1.0.md)
