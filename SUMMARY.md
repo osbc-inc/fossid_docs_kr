@@ -74,6 +74,6 @@
 ## FossID 업데이트
 
 * [FossID 최신 버전 안내](fossid/fossid/README.md)
-  * [업데이트 가이드(23.1 이전) \_ OLD](fossid/fossid/23.1-_-old.md)
-  * [업데이트 가이드(23.1 이전)](fossid/fossid/23.1.md)
+  * [업데이트 가이드(23.1 이전) \_ OLD](fossid/fossid/23.1.md)
+  * [업데이트 가이드(23.1 이전)](<fossid/fossid/23.1 (1).md>)
   * [업데이트 가이드(23.1 이상)](fossid/fossid/23.1-1.md)
