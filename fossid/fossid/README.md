@@ -1,6 +1,6 @@
 # FossID 최신 버전 안내
 
-<mark style="color:purple;">**FossID 25.1.0**</mark> 버전이 출시되었습니다.
+<mark style="color:red;background-color:red;">**FossID**</mark> <mark style="color:red;background-color:red;">**2025.1.0**</mark> 버전이 출시되었습니다.
 
 &#x20;&#x20;
 
