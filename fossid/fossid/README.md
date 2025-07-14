@@ -5,7 +5,7 @@
 &#x20;&#x20;
 
 * 25.1.1 버전에 대한 Release Note 및 패키지는 하기 링크 또는 FossID Delivery 사이트를 통해 다운로드 가능합니다.\
-  \- [https://fossid.osbc.co.kr/download/byunghoon/fossid\_25.1.1.zip](https://fossid.osbc.co.kr/download/byunghoon/fossid_25.1.1.zip)\
+  \- [https://fossid.osbc.kr/download/byunghoon/fossid\_25.1.1.zip](https://fossid.osbc.kr/download/byunghoon/fossid_25.1.1.zip)\
   \- [https://vault-apac.foss.id/delivery/](https://vault-apac.foss.id/delivery/)
 
 \+ 접근 계정 정보가 필요한 경우 회신 주시기 바랍니다.
