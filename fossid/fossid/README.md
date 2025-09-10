@@ -20,4 +20,4 @@
 
 * 업데이트 방법은 다음 링크를 확인하여 주시기 바랍니다.\
   \- [https://fossid.osbc.co.kr/help/en/installation/update-instructions.html](https://fossid.osbc.co.kr/help/en/installation/update-instructions.html)\
-  \- [23.1-1.md](23.1-1.md "mention")
+  \- [https://fossid-docs.osbc.kr/fossid/fossid/23.1-1](https://fossid-docs.osbc.kr/fossid/fossid/23.1-1)
