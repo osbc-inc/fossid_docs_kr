@@ -76,3 +76,10 @@
 * [FossID 최신 버전 안내](fossid/fossid/README.md)
   * [업데이트 가이드(23.1 버전 미만)](<fossid/fossid/23.1 (1).md>)
   * [업데이트 가이드(23.1 버전 이상)](fossid/fossid/23.1-1.md)
+
+***
+
+* [FossID 설치](fossid-1/README.md)
+  * [Debian의 Workbench 서버](fossid-1/debian-workbench.md)
+  * [RHEL의 Workbench 서버](fossid-1/rhel-workbench.md)
+  * [Troubleshooting](fossid-1/troubleshooting.md)
