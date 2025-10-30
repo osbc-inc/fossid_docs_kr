@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Debian의 Workbench 서버
 
 ### Assumptions <a href="#assumptions" id="assumptions"></a>

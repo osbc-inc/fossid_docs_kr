@@ -1,2 +1,6 @@
-# FossID 설치
+---
+hidden: true
+---
+
+# FossID 설치 가이드
 
