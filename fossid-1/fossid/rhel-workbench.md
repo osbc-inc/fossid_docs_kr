@@ -4,94 +4,111 @@ hidden: true
 
 # RHEL의 Workbench 서버
 
-### Assumptions <a href="#assumptions" id="assumptions"></a>
+### \[안내] <a href="#assumptions" id="assumptions"></a>
 
-* Following these installation instructions, the FossID Workbench will be installed in `/fossid`.
-* The target operating system is installed without Web server nor SQL server.
-* The user logged in performing the installation instructions is allowed to run `sudo`.
-* This example is applicable to:
-  * RedHat Enterprise Linux 8 and 9
-  * RedHat Enterprise Linux Server 8 and 9
+* 이 설치 지침에 따라 FossID Workbench는 `/fossid` 경로에 설치됩니다.
+* 대상 운영 체제는 웹 서버나 SQL 서버 없이 설치됩니다.
+* 설치 지침을 수행하여 로그인한 사용자는 `sudo`를 실행할 수 있습니다.
 
-The minimum PHP required version is 8.2.
+### \[OS 요구사항]
 
-The minimum required version of the database server is MySQL Server 8.0 or MariaDB 10.6.
+* RedHat Enterprise Linux 8 및 9
+* RedHat Enterprise Linux Server 8 및 9
 
-However, we recommend that all sub-systems are at least in their oldest still maintained version.
+### \[PHP 요구사항]
 
-### Prerequisites on system wide settings <a href="#prerequisites-on-system-wide-settings" id="prerequisites-on-system-wide-settings"></a>
+* PHP의 최소 요구 버전은 <mark style="color:red;">**8.2**</mark>입니다.
+* 단, 모든 하위 시스템(PHP, DB 등)은 **유지보수 중인 가장 오래된 버전 이상**을 사용하는 것을 권장합니다.
 
-#### Open firewall ports <a href="#open-firewall-ports" id="open-firewall-ports"></a>
+### \[DATABASE 요구사항]
+
+* Database 서버의 최소 요구 버전은 <mark style="color:red;">**MySQL Server 8.0**</mark> <mark style="color:red;"></mark><mark style="color:red;">또는</mark> <mark style="color:red;"></mark><mark style="color:red;">**MariaDB 10.6**</mark>입니다.
+* 단, 모든 하위 시스템(PHP, DB 등)은 **유지보수 중인 가장 오래된 버전 이상**을 사용하는 것을 권장합니다.
+
+***
+
+### \[시스템 전체 설정에 대한 전제 조건] <a href="#prerequisites-on-system-wide-settings" id="prerequisites-on-system-wide-settings"></a>
+
+#### 1. 방화벽 포트 열기 <a href="#open-firewall-ports" id="open-firewall-ports"></a>
 
 ```
 sudo firewall-cmd --add-service=http --zone=public --permanent
 sudo firewall-cmd --add-service=https --zone=public --permanent
 ```
 
-#### SELinux <a href="#selinux" id="selinux"></a>
 
-Please disable SELINUX and then reboot the system:
+
+#### 2. SELINUX <a href="#selinux" id="selinux"></a>
+
+SELINUX를 비활성화한 후 시스템을 재부팅하세요.
 
 ```
 sudo vi /etc/selinux/config
 ```
 
-This is needed as FossID do not yet have a SELinux policy in place.
+FossID에는 아직 SELinux 정책이 없기 때문에 비활성화 필요합니다.
 
-#### en\_US.UTF-8 Locale <a href="#en_usutf-8-locale" id="en_usutf-8-locale"></a>
 
-The Workbench requires “en\_US.utf8” to be available in the host environment’s locale.
 
-To display current available locales on your system:
+#### 3. en\_US.UTF-8 Locale <a href="#en_usutf-8-locale" id="en_usutf-8-locale"></a>
+
+Workbench를 사용하려면 호스트 환경의 locale에서 "en\_US.utf8"을 사용할 수 있어야 합니다.
+
+시스템에서 현재 사용 가능한 locale을 표시하려면:
 
 ```
 locale -a
 ```
 
-If the “en\_US.utf8” is not present, it needs to be added.
+"en\_US.utf8"이 없으면 추가해야 합니다.
 
-#### Packages required by the FossID Workbench <a href="#packages-required-by-the-fossid-workbench" id="packages-required-by-the-fossid-workbench"></a>
 
-**Add repositories**
 
-**Epel repository on RedHat**
+#### 4.  FossID Workbench에 필요한 패키지 <a href="#packages-required-by-the-fossid-workbench" id="packages-required-by-the-fossid-workbench"></a>
 
-RedHat 8
+**\[저장소 추가]**
+
+**※ RedHat의 Epel 저장소**
+
+Redhat 8의 경우
 
 ```
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
 ```
 
-RedHat 9
+Redhat 9의 경우
 
 ```
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y
 ```
 
-**Remi’s RPM Repository**
+\
+**※ Remi의 RPM 저장소**
 
-For Redhat 8
+Redhat 8의 경우
 
 ```
 sudo yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 ```
 
-For Redhat 9
+Redhat 9의 경우
 
 ```
 sudo yum install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
 ```
 
-**Install packages**
 
-Set the desired version of PHP (minimum required version is 8.2).
+
+**패키지 설치**
+
+원하는 PHP 버전을 설정합니다(최소 필요 버전은 8.2입니다).
 
 ```
 sudo yum module reset php
 sudo yum module enable php:remi-8.2 -y
 ```
 
-**RedHat 8**
+**레드햇 8**
 
 ```
 sudo yum install bash bzip2 coreutils curl findutils git glibc grep gzip java-11-openjdk-headless \
@@ -100,7 +117,7 @@ sudo yum install bash bzip2 coreutils curl findutils git glibc grep gzip java-11
             sudo tar unzip vim wget xz zip -y
 ```
 
-**RedHat 9**
+**레드햇 9**
 
 ```
 sudo yum install bash bzip2 coreutils curl findutils git glibc grep gzip java-11-openjdk-headless \
@@ -109,155 +126,158 @@ sudo yum install bash bzip2 coreutils curl findutils git glibc grep gzip java-11
             sudo tar unzip vim wget xz zip -y
 ```
 
-NOTE: In RedHat, unrar is not distributed in the standard repository. However, your company may have licensed the unrar package. If you need to extract rar files in FossID Workbench, ask your system administrator if the unrar package is available.
+참고: RedHat에서는 unrar가 표준 저장소에 배포되지 않습니다. 하지만 회사에서 unrar 패키지에 대한 라이선스를 보유하고 있을 수 있습니다. FossID Workbench에서 rar 파일을 추출해야 하는 경우, 시스템 관리자에게 unrar 패키지가 있는지 문의하십시오.
 
-### Access Deliverables <a href="#access-deliverables" id="access-deliverables"></a>
+***
 
-Access information to the FossID deliverables is provided in the delivery mail.
+### \[액세스 제공물] <a href="#access-deliverables" id="access-deliverables"></a>
 
-Download `fossid-release_regular.x86_64.rpm` from the delivery portal.
+FossID 납품물에 대한 접근 정보는 배달 우편물에 포함되어 있습니다.
 
-#### Install FossID deliverable <a href="#install-fossid-deliverable" id="install-fossid-deliverable"></a>
+`fossid-release_regular.x86_64.rpm`배송 포털에서 다운로드하세요 .
 
-Install FossID:
+#### FossID 제공물 설치 <a href="#install-fossid-deliverable" id="install-fossid-deliverable"></a>
 
-```
-sudo yum localinstall fossid-release_regular.x86_64-{VERSION}.rpm -y
-```
+FossID 설치:
 
-### Database and Web Server Installation <a href="#database-and-web-server-installation" id="database-and-web-server-installation"></a>
+<pre><code><strong>sudo yum localinstall fossid-release_regular.x86_64-{VERSION}.rpm -y
+</strong></code></pre>
 
-#### Install MySQL/MariaDB <a href="#install-mysqlmariadb" id="install-mysqlmariadb"></a>
+***
+
+### \[데이터베이스 및 웹 서버 설치] <a href="#database-and-web-server-installation" id="database-and-web-server-installation"></a>
+
+#### MySQL/MariaDB 설치 <a href="#install-mysqlmariadb" id="install-mysqlmariadb"></a>
 
 ```
 sudo yum install -y mariadb mariadb-server
 ```
 
-Due to the older version of MariaDB on the supported systems we recommend installing a newer version. For installing MySQL 8.0 or a newer version we recommend following the official guide at [https://dev.mysql.com/doc/refman/8.0/en/installing.html](https://dev.mysql.com/doc/refman/8.0/en/installing.html) For installing MariaDB 10.6 or a newer version we recommend following the official guide at [https://mariadb.com/kb/en/yum/](https://mariadb.com/kb/en/yum/).
+지원되는 시스템에서 MariaDB 버전이 이전 버전이므로 최신 버전을 설치하는 것이 좋습니다. MySQL 8.0 이상 버전을 설치하려면 [https://dev.mysql.com/doc/refman/8.0/en/installing.html](https://dev.mysql.com/doc/refman/8.0/en/installing.html) 의 공식 가이드를 따르는 것이 좋습니다. MariaDB 10.6 이상 버전을 설치하려면 [https://mariadb.com/kb/en/yum/](https://mariadb.com/kb/en/yum/) 의 공식 가이드를 따르는 것이 좋습니다 .
 
-NOTE: It is recommended to explicitly set these values for character set and collation in your MySQL/MariaDB config file:
+참고: MySQL/MariaDB 구성 파일에서 문자 집합 및 정렬에 대한 다음 값을 명시적으로 설정하는 것이 좋습니다.
 
 ```
 character-set-server     = utf8mb4
 collation-server         = utf8mb4_general_ci
 ```
 
-For MySQL Replication the parameter `default_collation_for_utf8mb4` must be set to `utf8mb4_general_ci`. More details here: [https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar\_default\_collation\_for\_utf8mb4](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_default_collation_for_utf8mb4)
+MySQL 복제의 경우 매개변수를 . `default_collation_for_utf8mb4`로 설정해야 합니다 `utf8mb4_general_ci`. 자세한 내용은 [https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar\_default\_collation\_for\_utf8mb4 를 참조하세요.](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_default_collation_for_utf8mb4)
 
-#### Update server configuration <a href="#update-server-configuration" id="update-server-configuration"></a>
+#### 서버 구성 업데이트 <a href="#update-server-configuration" id="update-server-configuration"></a>
 
-A value of at least `64M` needs to be set for `max_allowed_packet` under `[mysqld]` tag in the corresponding file for your mysql server distribution (e.g. `/etc/mysql/my.cnf` or `/etc/my.cnf`). See below reference:
+MySQL 서버 배포판(예: 또는 ) 의 해당 파일에서 under 태그에 최소 값을 `64M`설정해야 합니다 . 아래 참조를 참조하세요.`max_allowed_packet[mysqld]/etc/mysql/my.cnf/etc/my.cnf`
 
 ```
 [mysqld]
 max_allowed_packet = 64M
 ```
 
-This may vary for each Linux distribution and mysql server distribution. Please review the documentation for your corresponding Linux and mysql version distribution.
+이는 Linux 배포판과 MySQL 서버 배포판에 따라 다를 수 있습니다. 해당 Linux 및 MySQL 버전 배포판의 설명서를 참조하세요.
 
-Start and enable the database service:
+데이터베이스 서비스를 시작하고 활성화합니다.
 
 ```
 sudo systemctl enable --now mysqld.service
 ```
 
-or
+또는
 
 ```
 sudo systemctl enable --now mariadb.service
 ```
 
-**Configure MySQL**
+**MySQL 구성**
 
-In this example, we will:
+이 예에서는 다음을 수행합니다.
 
-* Create the database `fossid_db`
-* Create user `fossiduser` with the password `123`
-* Provide access to `fossid_db` for the `fossiduser`.
-* Create Workbench user with user name `fossid` and password `fossidlogin`.
+* 데이터베이스 생성`fossid_db`
+* `fossiduser`비밀번호로 사용자를 생성합니다`123`
+* `fossid_db`. 에 대한 액세스를 제공합니다 `fossiduser`.
+* 사용자 이름 `fossid`과 비밀번호를 사용하여 Workbench 사용자를 생성합니다 `fossidlogin`.
 
-These credentials will later need to be added to the `webapp_db_*` configuration in the `fossid.conf` configuration file. Please use strong and unique passwords.
+`webapp_db_*`이러한 자격 증명은 나중에 구성 파일 의 구성 에 추가해야 합니다 `fossid.conf`. 강력하고 고유한 비밀번호를 사용하세요.
 
-**Setup Mysql instance**
+**MySQL 인스턴스 설정**
 
-Create the database:
+데이터베이스를 생성합니다:
 
 ```
 sudo mysql -h localhost -e "CREATE DATABASE fossid_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;"
 ```
 
-Create the user:
+사용자를 생성합니다.
 
 ```
 sudo mysql -h localhost -e "CREATE USER 'fossiduser'@'localhost' IDENTIFIED BY '123';"
 sudo mysql -h localhost -e "GRANT ALL PRIVILEGES ON fossid_db.* TO 'fossiduser'@'localhost' WITH GRANT OPTION;"
 ```
 
-If the server you use is the MySQL server (not MariaDB), run this extra command as well:
+사용하는 서버가 MySQL 서버(MariaDB가 아닌)인 경우 다음 추가 명령도 실행하세요.
 
 ```
 sudo mysql -h localhost -e "ALTER USER 'fossiduser'@'localhost' identified by '123';"
 ```
 
-Please note that on some systems, MariaDB is installed with the mysql-server package. To find out if MySQL server is installed, run:
+일부 시스템에서는 MariaDB가 mysql-server 패키지와 함께 설치됩니다. MySQL 서버가 설치되어 있는지 확인하려면 다음을 실행하세요.
 
 ```
 mysql --version
 ```
 
-Example output when MySQL is installed:
+MySQL이 설치된 경우의 출력 예:
 
 ```
 mysql  Ver 8.0.35 for Linux on x86_64
 ```
 
-Example output when MariaDB is installed:
+MariaDB가 설치된 경우의 출력 예:
 
 ```
 mysql  Ver 15.1 Distrib 10.6.15-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2
 ```
 
-Import FossID database schema to the newly created database:
+새로 만든 데이터베이스로 FossID 데이터베이스 스키마를 가져옵니다.
 
 ```
 sudo mysql -u fossiduser -p'123' fossid_db < /fossid/setup/database/dbclean.sql
 ```
 
-**Configure Admin Password**
+**관리자 비밀번호 구성**
 
-Set your Workbench FossID account admin password (at first login the password will be hashed with argon2id and md5 hash removed):
+Workbench FossID 계정 관리자 비밀번호를 설정합니다(처음 로그인할 때 비밀번호는 argon2id로 해시되고 md5 해시가 제거됩니다).
 
 ```
 mysql -h localhost -u fossiduser -e "update users set password_md5=md5('fossidlogin');" fossid_db -p'123'
 ```
 
-#### Install Web Server <a href="#install-web-server" id="install-web-server"></a>
+#### 웹 서버 설치 <a href="#install-web-server" id="install-web-server"></a>
 
-In this reference set up, we will use the NginX webserver. You are free to use other webservers as well, though as FossID uses NginX, we can assist in configuration.
+이 참조 설정에서는 NginX 웹 서버를 사용합니다. 다른 웹 서버를 사용해도 되지만, FossID는 NginX를 사용하므로 저희가 설정을 도와드릴 수 있습니다.
 
-Install Nginx:
+Nginx 설치:
 
 ```
 sudo yum install nginx -y
 ```
 
-**Configure NginX**
+**NginX 구성**
 
-Copy the sample `nginx.conf.dist` from `/fossid/setup/templates` to `/etc/nginx/`:
+샘플 을 `nginx.conf.dist`에서 `/fossid/setup/templates`로 복사합니다 `/etc/nginx/`:
 
 ```
 sudo cp /fossid/setup/templates/nginx.conf.dist /etc/nginx/nginx.conf
 ```
 
-By default, NginX is configured to forward php requests to a php8.2 socket. If you have a different version of php installed, the path to the socket needs to be changed.
+기본적으로 NginX는 PHP 요청을 php8.2 소켓으로 전달하도록 설정되어 있습니다. 다른 버전의 PHP가 설치되어 있는 경우 소켓 경로를 변경해야 합니다.
 
-To find out, what version of php is installed, run:
+설치된 php 버전을 확인하려면 다음을 실행하세요.
 
 ```
 php --version
 ```
 
-If it is different than 8.2, edit the `/etc/nginx/nginx.conf` and look for the following section:
+8.2와 다른 경우 을 편집하여 `/etc/nginx/nginx.conf`다음 섹션을 찾으세요.
 
 ```
 location = /index.php {
@@ -269,15 +289,15 @@ location = /index.php {
 }
 ```
 
-Change the `fastcgi_pass unix:/run/php/php8.2-fpm.sock;` to point to the right version of php. For example, if php version is 8.3, the line should look like this:
+올바른 php 버전을 가리키도록 변경하세요 `fastcgi_pass unix:/run/php/php8.2-fpm.sock;`. 예를 들어, php 버전이 8.3이면 다음과 같습니다.
 
 ```
 fastcgi_pass unix:/run/php/php8.3-fpm.sock;
 ```
 
-**Enable HTTPs (optional)**
+**HTTPs 활성화(선택 사항)**
 
-Find the instructions in the `nginx.conf` template file on how to enable HTTPs:
+`nginx.conf`HTTP를 활성화하는 방법에 대한 지침은 템플릿 파일에서 확인하세요 .
 
 ```
 # How to enable ssl:
@@ -296,21 +316,21 @@ Find the instructions in the `nginx.conf` template file on how to enable HTTPs:
 # ssl_dhparam /etc/nginx/dhparam.pem;
 ```
 
-**Configure PHP**
+**PHP 구성**
 
-Create `/run/php` directory if it does not exist:
+`/run/php`디렉토리가 없으면 생성합니다 .
 
 ```
 sudo mkdir -p /run/php
 ```
 
-To make sure the /run/php directory exists when system boots, create a file `/usr/lib/tmpfiles.d/php.conf` with the following contents:
+시스템이 부팅될 때 /run/php 디렉토리가 존재하는지 확인하려면 `/usr/lib/tmpfiles.d/php.conf`다음 내용이 담긴 파일을 만드세요.
 
 ```
 d /run/php 0755 root root -
 ```
 
-Edit the `www.conf` file corresponding to your Linux distribution (`/etc/php-fpm.d/www.conf` or `/etc/php/X.Y/fpm/pool.d/www.conf`) and make sure the following configuration is set, or copy the sample file from `/fossid/setup/templates/www.conf.dist` to the corresponding location of your Linux distribution:
+`www.conf`Linux 배포판( `/etc/php-fpm.d/www.conf`또는 )에 해당하는 파일을 편집 `/etc/php/X.Y/fpm/pool.d/www.conf`하고 다음 구성이 설정되어 있는지 확인하거나 샘플 파일을 `/fossid/setup/templates/www.conf.dist`Linux 배포판의 해당 위치로 복사합니다.
 
 ```
 user = www-data
@@ -322,55 +342,57 @@ listen.mode = 0660
 ;listen.acl_users = apache,nginx   <-- make sure it's commented out.
 ```
 
-Change the `listen = /run/php/php8.2-fpm.sock` to point to the right version of php. For example, if the php version is 8.2 the line should look like this:
+`listen = /run/php/php8.2-fpm.sock`php의 올바른 버전을 가리키도록 변경하세요 . 예를 들어, php 버전이 8.2라면 다음과 같은 줄을 작성해야 합니다.
 
 ```
 listen = /run/php/php8.2-fpm.sock
 ```
 
-Make sure that the phpX.Y-fpm service is running and accessible by www-data user. Please note that on some systems, the service name may be different (php-fpm).
+phpX.Y-fpm 서비스가 실행 중이고 www-data 사용자가 접근할 수 있는지 확인하세요. 일부 시스템에서는 서비스 이름이 php-fpm과 다를 수 있습니다.
 
-Change the group ownership of `/var/lib/php` and then restart the php-fpm:
+그룹 소유권을 변경한 `/var/lib/php`후 php-fpm을 다시 시작합니다.
 
 ```
 sudo chgrp www-data -R /var/lib/php/
 sudo systemctl restart php-fpm
 ```
 
-Start php-fpm service:
+php-fpm 서비스를 시작합니다:
 
 ```
 sudo systemctl start php-fpm
 sudo systemctl enable php-fpm
 ```
 
-Restart NginX service:
+NginX 서비스를 다시 시작합니다.
 
 ```
 sudo systemctl restart nginx
 sudo systemctl enable nginx
 ```
 
-Change the group ownership of the php service folder:
+php 서비스 폴더의 그룹 소유권을 변경합니다.
 
 ```
 sudo chgrp www-data -R /var/lib/php
 ```
 
-### Configure FossID <a href="#configure-fossid" id="configure-fossid"></a>
+***
 
-#### Basic fossid.conf settings <a href="#basic-fossidconf-settings" id="basic-fossidconf-settings"></a>
+### \[FossID 구성] <a href="#configure-fossid" id="configure-fossid"></a>
 
-The FossID configuration file is at `/fossid/etc/fossid.conf`.
+#### 기본 fossid.conf 설정 <a href="#basic-fossidconf-settings" id="basic-fossidconf-settings"></a>
 
-**Configure Scan Server access**
+FossID 구성 파일은 `/fossid/etc/fossid.conf`.에 있습니다.
+
+**스캔 서버 액세스 구성**
 
 ```
 cli_server_host = YOUR_SERVER_HOST
 cli_token = YOUR_TOKEN
 ```
 
-**Configure database connection**
+**데이터베이스 연결 구성**
 
 ```
 ; Database server host
@@ -389,111 +411,119 @@ webapp_db_username=fossiduser
 webapp_db_password=123
 ```
 
-**Configure Workbench URL**
+**워크벤치 URL 구성**
 
-This information is used to generate correct absolute URLs in emails:
+이 정보는 이메일에서 올바른 절대 URL을 생성하는 데 사용됩니다.
 
 ```
 webapp_base_url = https://mycompany.com/index.php
 ```
 
-Save your fossid.conf file.
+fossid.conf 파일을 저장합니다.
 
-NOTE: The changes to configuration is immediate, no restart is required.
+참고: 구성 변경 사항은 즉시 적용되므로 재시작이 필요하지 않습니다.
 
-#### Finalize installation <a href="#finalize-installation" id="finalize-installation"></a>
+***
 
-Verify that the database was created successfully and add additional indexes:
+#### \[설치 완료] <a href="#finalize-installation" id="finalize-installation"></a>
+
+데이터베이스가 성공적으로 생성되었는지 확인하고 추가 인덱스를 추가합니다.
 
 ```
 cd /fossid/setup/database
 php dbupdate.php /fossid/etc/fossid.conf
 ```
 
-Create the required roles and permissions:
+필요한 역할과 권한을 만듭니다.
 
 ```
 php db_info_update.php /fossid/etc/fossid.conf
 ```
 
-Create the license database:
+라이선스 데이터베이스를 생성합니다.
 
 ```
 php licenseupdate.php /fossid/etc/fossid.conf
 ```
 
-#### Verify Workbench Access <a href="#verify-workbench-access" id="verify-workbench-access"></a>
+***
 
-Browse to [http://localhost/](http://localhost/)
+#### \[워크벤치 접근 확인] <a href="#verify-workbench-access" id="verify-workbench-access"></a>
 
-Login with user name `fossid` and the password that you created in the [Configure Admin Password](https://www.auditoss.kr/help/en/installation/webapp_rhel.html#configure-admin-password) step.
+[http://localhost/](http://localhost/) 로 이동합니다
 
-NOTE: FossID Workbench is officially supported on Chrome browser.
+[관리자 비밀번호 구성](https://www.auditoss.kr/help/en/installation/webapp_rhel.html#configure-admin-password) 단계에서 생성한 사용자 이름 `fossid`과 비밀번호 로 로그인합니다 .
 
-#### Configure Git <a href="#configure-git" id="configure-git"></a>
+참고: FossID Workbench는 공식적으로 Chrome 브라우저에서 지원됩니다.
 
-FossID Workbench provides the API allowing you to get a project source code directly from a git repository. The Workbench connects using SSH and it needs the keys to be available for the `www-data` user.
+***
 
-Check the path to the home directory for the `www-data` user:
+#### \[참고 사항] <a href="#configure-git" id="configure-git"></a>
+
+#### Git 구성 <a href="#configure-git" id="configure-git"></a>
+
+FossID Workbench는 Git 저장소에서 프로젝트 소스 코드를 직접 가져올 수 있는 API를 제공합니다. Workbench는 SSH를 통해 연결되며, 사용자가 사용할 수 있는 키가 필요합니다 `www-data`.
+
+사용자 의 홈 디렉토리 경로를 확인하세요 `www-data`.
 
 ```
 cat /etc/passwd |grep www-data|cut -d : -f 6
 ```
 
-The output will be similar to `/var/www`.
+출력은 다음과 유사합니다 `/var/www`.
 
-Create a folder named .ssh in the home directory (assuming the output of the previous command was `/var/www`):
+홈 디렉토리에 .ssh라는 이름의 폴더를 만듭니다(이전 명령의 출력이 다음과 같다고 가정 `/var/www`).
 
 ```
 sudo mkdir /var/www/.ssh
 ```
 
-Copy the private key that is trusted by your git server in the newly created .ssh folder
+새로 만든 .ssh 폴더에 git 서버에서 신뢰하는 개인 키를 복사하세요.
 
-The server hosting the git repository needs to be added to known hosts. For each server you want to add run this command:
+git 저장소를 호스팅하는 서버를 알려진 호스트에 추가해야 합니다. 추가하려는 각 서버에 대해 다음 명령을 실행하세요.
 
 ```
 ssh-keyscan server_address >> /var/www/.ssh/known_hosts
 ```
 
-Make the www-data user the owner of the .ssh folder and its contents:
+www-data 사용자를 .ssh 폴더와 그 내용의 소유자로 지정합니다.
 
 ```
 chown -R www-data:www-data /var/www/.ssh
 ```
 
-Check the product documentation on how to make a API call to create a new scan using a git repository. The documentation is accessible from the menu (Docs) and available at this URL:
+Git 저장소를 사용하여 새 스캔을 생성하는 API 호출 방법은 제품 설명서를 확인하세요. 설명서는 메뉴(문서)에서 확인할 수 있으며, 다음 URL에서 확인할 수 있습니다.
 
-[http://localhost/help/en/index.html](http://localhost/help/en/index.html)
+[http://localhost/help/ko/index.html](http://localhost/help/en/index.html)
 
-#### Configure Dependency Analysis <a href="#configure-dependency-analysis" id="configure-dependency-analysis"></a>
+#### 종속성 분석 구성 <a href="#configure-dependency-analysis" id="configure-dependency-analysis"></a>
 
-There are two tools: FossID-DA or OSS Review Toolkit that can be used to provide information on package dependencies and their license information right in the FossID Workbench user interface. Using the Dependency Analysis feature, you can get a better insight into the licenses your software needs to be compliant with. FossID also provides API for the Dependency Analysis so it can be included in your Continuous Integration pipeline.
+FossID Workbench 사용자 인터페이스에서 바로 패키지 종속성 및 라이선스 정보를 제공하는 데 사용할 수 있는 FossID-DA 또는 OSS 검토 툴킷이라는 두 가지 도구가 있습니다. 종속성 분석 기능을 사용하면 소프트웨어가 준수해야 하는 라이선스에 대한 더 나은 통찰력을 얻을 수 있습니다. FossID는 종속성 분석 API도 제공하므로 지속적 통합 파이프라인에 포함할 수 있습니다.
 
-See the [Dependency Analysis Installation](https://www.auditoss.kr/help/en/installation/dependency-analysis.html) for detailed build and installation instructions.
+[자세한 빌드 및 설치 지침은 종속성 분석 설치를](https://www.auditoss.kr/help/en/installation/dependency-analysis.html) 참조하세요 .
 
-#### Configuring Scan Capacity - Client Side <a href="#configuring-scan-capacity---client-side" id="configuring-scan-capacity---client-side"></a>
+#### 스캔 용량 구성 - 클라이언트 측 <a href="#configuring-scan-capacity---client-side" id="configuring-scan-capacity---client-side"></a>
 
-The client side can configure how scans are issued, allowing scan capacity distribution on a on a more granular level than per token.
+클라이언트 측에서는 스캔이 발행되는 방식을 구성하여 토큰별보다 더 세부적인 수준에서 스캔 용량을 분배할 수 있습니다.
 
-The following setting can control how many scanning threads a single workbench scan can initiate:
+다음 설정은 단일 워크벤치 스캔이 시작할 수 있는 스캔 스레드 수를 제어할 수 있습니다.
 
 ```
 webapp_max_threads=8
 ```
 
-The number of concurrent scans can be controlled with this setting:
+동시 스캔 수는 다음 설정으로 제어할 수 있습니다.
 
 ```
 webapp_max_concurrent_scans=3
 ```
 
-If the max number of scans is already in progress when attempting to start a new scan that scan will be added to a queue and started automatically when one of the currently running scans has finished.
+새로운 스캔을 시작하려고 할 때 최대 스캔 수가 이미 진행 중이면 해당 스캔은 대기열에 추가되고 현재 실행 중인 스캔 중 하나가 완료되면 자동으로 시작됩니다.
 
-If you are suffering from intermittent network latencies, issuing batch scans may improve the overall experience. Decrease the batch size in the setting below, to get a better user experience in the user interface. Increase it to compensate for network latencies:
+간헐적인 네트워크 지연으로 어려움을 겪고 있다면 일괄 검사를 실행하면 전반적인 사용자 경험이 향상될 수 있습니다. 사용자 인터페이스에서 더 나은 사용자 경험을 얻으려면 아래 설정에서 일괄 처리 크기를 줄이세요. 네트워크 지연을 보완하려면 일괄 처리 크기를 늘리세요.
 
 ```
 webapp_max_files_per_thread=16
 ```
 
-If you are experiencing difficulties please see [troubleshooting page](troubleshooting.md).
+문제가 발생할 경우 [문제 해결 페이지](troubleshooting.md)를 참조하세요 .

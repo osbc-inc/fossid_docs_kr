@@ -79,7 +79,7 @@
 
 ## FossID 설치
 
-* [FossID 설치](fossid-1/fossid/README.md)
+* [FossID 설치 가이드](fossid-1/fossid/README.md)
   * [Debian의 Workbench 서버](fossid-1/fossid/debian-workbench.md)
   * [RHEL의 Workbench 서버](fossid-1/fossid/rhel-workbench.md)
   * [Troubleshooting](fossid-1/fossid/troubleshooting.md)
