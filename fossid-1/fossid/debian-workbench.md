@@ -4,27 +4,35 @@ hidden: true
 
 # Debian의 Workbench 서버
 
-### Assumptions <a href="#assumptions" id="assumptions"></a>
+### \[안내] <a href="#assumptions" id="assumptions"></a>
 
-* 이 설치 지침에 따라 FossID Workbench는 `/fossid`에 설치됩니다.
+* 이 설치 지침에 따라 FossID Workbench는 `/fossid` 경로에 설치됩니다.
 * 대상 운영 체제는 웹 서버나 SQL 서버 없이 설치됩니다.
 * 설치 지침을 수행하여 로그인한 사용자는 `sudo`를 실행할 수 있습니다.
-* 이 예는 다음에 적용할 수 있습니다
-  * Debian 11
-  * Debian 12
-  * Ubuntu 20.04
-  * Ubuntu 22.04
-  * Ubuntu 24.04
 
-**최소 PHP 버전**은 **8.2입**니다.
+### \[OS 요구사항]
 
-데이터베이스 서버에 필요한 최소 버전은 **MySQL Server 8.0** 또는 **MariaDB 10.6**입니다.
+* Debian 11
+* Debian 12
+* Ubuntu 20.04
+* Ubuntu 22.04
+* Ubuntu 24.04
 
-그러나 모든 하위 시스템은 최소한 가장 오래되고 여전히 유지 관리되는 버전을 유지하는 것이 좋습니다.
+### \[PHP 요구사항]
 
-### 시스템 전체 설정에 대한 전제 조건 <a href="#prerequisites-on-system-wide-settings" id="prerequisites-on-system-wide-settings"></a>
+* PHP의 최소 요구 버전은 <mark style="color:red;">**8.2**</mark>입니다.
+* 단, 모든 하위 시스템(PHP, DB 등)은 **유지보수 중인 가장 오래된 버전 이상**을 사용하는 것을 권장합니다.
 
-#### en\_US.UTF-8 Locale <a href="#en_usutf-8-locale" id="en_usutf-8-locale"></a>
+### \[DATABASE 요구사항]
+
+* Database 서버의 최소 요구 버전은 <mark style="color:red;">**MySQL Server 8.0**</mark> <mark style="color:red;"></mark><mark style="color:red;">또는</mark> <mark style="color:red;"></mark><mark style="color:red;">**MariaDB 10.6**</mark>입니다.
+* 단, 모든 하위 시스템(PHP, DB 등)은 **유지보수 중인 가장 오래된 버전 이상**을 사용하는 것을 권장합니다.
+
+
+
+### \[시스템 전체 설정에 대한 전제 조건] <a href="#prerequisites-on-system-wide-settings" id="prerequisites-on-system-wide-settings"></a>
+
+#### 1. en\_US.UTF-8 Locale <a href="#en_usutf-8-locale" id="en_usutf-8-locale"></a>
 
 Workbench를 사용하려면 호스트 환경의 locale에서 "en\_US.utf8"을 사용할 수 있어야 합니다.
 
@@ -40,7 +48,7 @@ locale -a
 sudo vi /etc/locale.gen
 ```
 
-다음 명령을 사용하여 ocale을 생성합니다.
+다음 명령을 사용하여 locale을 생성합니다.
 
 ```
 sudo locale-gen
@@ -52,9 +60,9 @@ sudo locale-gen
 locale -a | grep en_US
 ```
 
-#### PHP 8.2 이상을 사용하여 저장소를 추가합니다. <a href="#add-a-repository-with-php-82-or-later" id="add-a-repository-with-php-82-or-later"></a>
+#### 2. PHP 8.2 이상을 사용하여 저장소를 추가합니다. <a href="#add-a-repository-with-php-82-or-later" id="add-a-repository-with-php-82-or-later"></a>
 
-Debian 11이나 Ubuntu 20.04 또는 Ubuntu 22.04에 설치하려면 먼저 PHP 8.2 이상이 있는 저장소를 추가해야 합니다.
+Debian 11이나 Ubuntu 20.04 또는 Ubuntu 22.04에 설치하려면, 먼저 PHP 8.2 이상이 있는 저장소를 추가해야 합니다.
 
 **Debian 11**
 
@@ -75,11 +83,11 @@ sudo add-apt-repository ppa:ondrej/php -y
 
 참고: Ubuntu 24.04와 Debian 12에는 최신 버전의 PHP 8.2가 포함되어 있으며, 기본적으로 PHP-8.2를 사용하는 nginx 구성만 변경하면 됩니다.
 
-### Access Deliverables <a href="#access-deliverables" id="access-deliverables"></a>
+### \[Deliverables 접근] <a href="#access-deliverables" id="access-deliverables"></a>
 
-FossID deliverables에 대한 접근 정보는 delivery mail에 포함되어 있습니다.
+FossID deliverables에 대한 접근 정보는 **delivery mail**에 포함되어 있습니다.
 
-delivery portal에서 `fossid-release_regular_amd64.deb` 를다운로드하세요 .
+**delivery portal**에서 `fossid-release_regular_amd64.deb` 를 다운로드하세요 .
 
 #### FossID 제공물 설치 <a href="#install-fossid-deliverable" id="install-fossid-deliverable"></a>
 
@@ -95,11 +103,15 @@ FossID 설치:
 sudo apt install ./fossid-release_regular_amd64-{VERSION}.deb -y
 ```
 
-### 데이터베이스 및 웹 서버 설치 <a href="#database-and-web-server-installation" id="database-and-web-server-installation"></a>
+### \[DATABASE 및 웹 서버 설치] <a href="#database-and-web-server-installation" id="database-and-web-server-installation"></a>
 
-#### MySQL/MariaDB 설치 <a href="#install-mysqlmariadb" id="install-mysqlmariadb"></a>
+#### 1. MySQL/MariaDB 설치 <a href="#install-mysqlmariadb" id="install-mysqlmariadb"></a>
 
-지원되는 배포판에서 MariaDb 및/또는 MySQL의 이전 버전이 설치되어 있으므로 최신 버전을 설치하는 것이 좋습니다. MySQL 8.0 이상 버전을 설치하는 경우 [https://dev.mysql.com/doc/refman/8.0/en/installing.html 의 공식 가이드를 따르는 것이 좋습니다. MariaDB 10.6 이상 버전을 설치하는 경우 ](https://dev.mysql.com/doc/refman/8.0/en/installing.html)[https://mariadb.com/kb/en/installing-mariadb-deb-files/](https://mariadb.com/kb/en/installing-mariadb-deb-files/) 의 공식 가이드를 따르는 것이 좋습니다 .
+지원되는 배포판에서 MariaDB 및/또는 MySQL의 이전 버전이 설치되어 있으므로 최신 버전을 설치하는 것이 좋습니다.&#x20;
+
+MySQL 8.0 이상 버전을 설치하는 경우, [https://dev.mysql.com/doc/refman/8.0/en/installing.html](https://dev.mysql.com/doc/refman/8.0/en/installing.html)의 공식 가이드를 따르는 것이 좋습니다.
+
+MariaDB 10.6 이상 버전을 설치하는 경우,[ ](https://dev.mysql.com/doc/refman/8.0/en/installing.html)[https://mariadb.com/kb/en/installing-mariadb-deb-files/](https://mariadb.com/kb/en/installing-mariadb-deb-files/) 의 공식 가이드를 따르는 것이 좋습니다 .
 
 ```
 sudo apt install default-mysql-server -y
@@ -112,18 +124,23 @@ character-set-server     = utf8mb4
 collation-server         = utf8mb4_general_ci
 ```
 
-MySQL 복제의 경우 매개변수를 . `default_collation_for_utf8mb4`로 설정해야 합니다 `utf8mb4_general_ci`. 자세한 내용은 [https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar\_default\_collation\_for\_utf8mb4 를 참조하세요.](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_default_collation_for_utf8mb4)
+MySQL 복제의 경우, 매개변수  `default_collation_for_utf8mb4` 는  `utf8mb4_general_ci` 로 설정해야 합니다 .&#x20;
 
-#### 서버 구성 업데이트 <a href="#update-server-configuration" id="update-server-configuration"></a>
+자세한 내용은 [https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar\_default\_collation\_for\_utf8mb4 ](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_default_collation_for_utf8mb4) 를 참조하세요.
 
-MySQL 서버 배포판(예: 또는 ) 의 해당 파일에서 under 태그에 최소 값을 `64M`설정해야 합니다 . 아래 참조를 참조하세요.`max_allowed_packet[mysqld]/etc/mysql/my.cnf/etc/my.cnf`
+#### (1) 서버 구성 업데이트 <a href="#update-server-configuration" id="update-server-configuration"></a>
+
+MySQL 서버 배포판의 해당 파일(예: `/etc/mysql/my.cnf`  또는`/etc/my.cnf`)에서 `max_allowed_packet` 에 대해  `64M` 이상의 값을 `[mysqld]` 태그 아래에 설정해야 합니다.
+
+아래 참조를 참조하세요.
 
 ```
 [mysqld]
 max_allowed_packet = 64M
 ```
 
-이는 Linux 배포판과 MySQL 서버 배포판에 따라 다를 수 있습니다. 해당 Linux 및 MySQL 버전 배포판의 설명서를 참조하세요.
+이는 Linux 배포판과 MySQL 서버 배포판에 따라 다를 수 있습니다. \
+해당 Linux 및 MySQL 버전 배포판의 설명서를 참조하세요.
 
 MySQL을 다시 시작합니다:
 
@@ -131,17 +148,20 @@ MySQL을 다시 시작합니다:
 sudo service mysql restart
 ```
 
+\
 **MySQL 구성**
 
 이 예에서는 다음을 수행합니다.
 
-* 데이터베이스 생성`fossid_db`
-* `fossiduser`비밀번호로 사용자를 생성합니다`123`
-* `fossid_db`. 에 대한 액세스를 제공합니다 `fossiduser`.
-* 사용자 이름 `fossid`과 비밀번호를 사용하여 Workbench 사용자를 생성합니다 `fossidlogin`.
+* 데이터베이스(`fossid_db`) 생성
+* 사용자(`fossiduser`),   비밀번호(`123`)로 생성합니다
+* `fossiduser`에게 `fossid_db` 대한 액세스를 제공합니다 .
+* 사용자 이름(`fossid)`과 비밀번호(`fossidlogin`)를 사용하여 Workbench 사용자를 생성합니다 .
 
-`webapp_db_*`이러한 자격 증명은 나중에 구성 파일 의 구성 에 추가해야 합니다 `fossid.conf`. 강력하고 고유한 비밀번호를 사용하세요.
+위 구성은 나중에 `fossid.conf` 파일의 `webapp_db_*` 에 추가해야 합니다. \
+강력하고 고유한 비밀번호를 사용하세요.
 
+\
 **MySQL 인스턴스 설정**
 
 데이터베이스를 생성합니다:
@@ -163,7 +183,8 @@ sudo mysql -h localhost -e "GRANT ALL PRIVILEGES ON fossid_db.* TO 'fossiduser'@
 sudo mysql -h localhost -e "ALTER USER 'fossiduser'@'localhost' identified by '123';"
 ```
 
-일부 시스템에서는 MariaDB가 mysql-server 패키지와 함께 설치됩니다. MySQL 서버가 설치되어 있는지 확인하려면 다음을 실행하세요.
+일부 시스템에서는 MariaDB가 mysql-server 패키지와 함께 설치됩니다. \
+MySQL 서버가 설치되어 있는지 확인하려면 다음을 실행하세요.
 
 ```
 mysql --version
@@ -187,17 +208,20 @@ mysql  Ver 15.1 Distrib 10.6.15-MariaDB, for debian-linux-gnu (x86_64) using rea
 sudo mysql -u fossiduser -p'123' fossid_db < /fossid/setup/database/dbclean.sql
 ```
 
+\
 **관리자 비밀번호 구성**
 
-Workbench FossID 계정 관리자 비밀번호를 설정합니다(처음 로그인할 때 비밀번호는 argon2id로 해시되고 md5 해시가 제거됩니다).
+Workbench FossID 계정 관리자 비밀번호를 설정합니다. \
+(처음 로그인할 때 비밀번호는 argon2id와 md5 해시가 제거된 상태로 해시됩니다.)
 
 ```
 mysql -h localhost -u fossiduser -e "update users set password_md5=md5('fossidlogin');" fossid_db -p'123'
 ```
 
-#### 웹 서버 설치 <a href="#install-web-server" id="install-web-server"></a>
+#### 2. 웹 서버 설치 <a href="#install-web-server" id="install-web-server"></a>
 
-이 참조 설정에서는 NginX 웹 서버를 사용합니다. 다른 웹 서버를 사용해도 되지만, FossID는 NginX를 사용하므로 저희가 설정을 도와드릴 수 있습니다.
+이 참조 설정에서는 NginX 웹 서버를 사용합니다.\
+다른 웹 서버를 사용하셔도 괜찮지만, FossID는 기본적으로 NginX를 사용하므로 설정 지원이 가능합니다.
 
 Nginx 설치:
 
@@ -207,13 +231,14 @@ sudo apt install nginx -y
 
 **NginX 구성**
 
-샘플 을 `nginx.conf.dist`에서 `/fossid/setup/templates`로 복사합니다 `/etc/nginx/`:
+샘플 `/fossid/setup/templatesnginx.conf.dist`을  `/etc/nginx/nginx.conf` 로 복사합니다 :
 
 ```
 sudo cp /fossid/setup/templates/nginx.conf.dist /etc/nginx/nginx.conf
 ```
 
-기본적으로 NginX는 PHP 요청을 php8.2 소켓으로 전달하도록 설정되어 있습니다. 다른 버전의 PHP가 설치되어 있는 경우 소켓 경로를 변경해야 합니다.
+기본적으로 NginX는 PHP 요청을 php8.2 소켓으로 전달하도록 설정되어 있습니다. \
+다른 버전의 PHP가 설치되어 있는 경우 소켓 경로를 변경해야 합니다.
 
 설치된 php 버전을 확인하려면 다음을 실행하세요.
 
@@ -221,7 +246,7 @@ sudo cp /fossid/setup/templates/nginx.conf.dist /etc/nginx/nginx.conf
 php --version
 ```
 
-8.2와 다른 경우 을 편집하여 `/etc/nginx/nginx.conf`다음 섹션을 찾으세요.
+php 8.2가 아닌 경우, `/etc/nginx/nginx.conf`을 편집하여 다음 섹션을 찾으세요.
 
 ```
 location = /index.php {
@@ -233,15 +258,17 @@ location = /index.php {
 }
 ```
 
-php의 올바른 버전을 가리키도록 변경하세요 `fastcgi_pass unix:/run/php/php8.2-fpm.sock;`. 예를 들어, php 버전이 8.2라면 다음과 같은 줄을 입력해야 합니다.
+`fastcgi_pass unix:/run/php/php8.2-fpm.sock;`부분에서 php의 올바른 버전으로 변경하세요.
+
+예를 들어, php 버전이 8.3라면 다음과 같이 변경이 필요합니다.
 
 ```
 fastcgi_pass unix:/run/php/php8.3-fpm.sock;
 ```
 
-**HTTPs 활성화(선택 사항)**
+**(선택사항) HTTPs 활성화**
 
-`nginx.conf`HTTP를 활성화하는 방법에 대한 지침은 템플릿 파일에서 확인하세요 .
+HTTP를 활성화하는 방법에 대한 지침은 `nginx.conf` 템플릿 파일에서 확인하세요 .
 
 ```
 # How to enable ssl:
