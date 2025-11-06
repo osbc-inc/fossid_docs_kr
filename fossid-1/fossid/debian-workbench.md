@@ -60,7 +60,7 @@ sudo locale-gen
 locale -a | grep en_US
 ```
 
-#### &#x20;<a href="#add-a-repository-with-php-82-or-later" id="add-a-repository-with-php-82-or-later"></a>
+
 
 #### 2. PHP 8.2 이상을 사용하여 저장소를 추가합니다. <a href="#add-a-repository-with-php-82-or-later" id="add-a-repository-with-php-82-or-later"></a>
 
