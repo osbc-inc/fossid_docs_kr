@@ -99,7 +99,7 @@ sudo yum install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
 
 
 
-**패키지 설치**
+**\[패키지 설치]**
 
 원하는 PHP 버전을 설정합니다(최소 필요 버전은 8.2입니다).
 
@@ -132,9 +132,9 @@ sudo yum install bash bzip2 coreutils curl findutils git glibc grep gzip java-11
 
 ### \[액세스 제공물] <a href="#access-deliverables" id="access-deliverables"></a>
 
-FossID 납품물에 대한 접근 정보는 delivery mail에 포함되어 있습니다.
+FossID deliverables에 대한 접근 정보는 **delivery mail**에 포함되어 있습니다.
 
-`fossid-release_regular.x86_64.rpm` delivery portal에서 다운로드하세요 .
+&#x20;delivery portal에서 `fossid-release_regular.x86_64.rpm`를 다운로드하세요 .
 
 #### FossID 제공물 설치 <a href="#install-fossid-deliverable" id="install-fossid-deliverable"></a>
 
@@ -168,7 +168,8 @@ collation-server         = utf8mb4_general_ci
 
 MySQL 복제의 경우, 매개변수  `default_collation_for_utf8mb4` 는  `utf8mb4_general_ci` 로 설정해야 합니다 .&#x20;
 
-자세한 내용은 [https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar\_default\_collation\_for\_utf8mb4](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_default_collation_for_utf8mb4)를 참조하세요.
+자세한 내용은 [https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar\_default\_collation\_for\_utf8mb4](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_default_collation_for_utf8mb4)를 참조하세요.\
+
 
 #### (1) 서버 구성 업데이트 <a href="#update-server-configuration" id="update-server-configuration"></a>
 
@@ -204,7 +205,7 @@ sudo systemctl enable --now mariadb.service
 * 데이터베이스 : `fossid_db`
 * 사용자 : `fossiduser`,   비밀번호 : `123`
 * `fossiduser`에게 `fossid_db` 대한 액세스를 제공
-* 설치 이후, Workbench 접속 초기 사용자 \[ 아이디 : `fossid` , 비밀번호 : `fossidlogin` ]
+* 설치 이후, Workbench 접속 초기 사용자 \[ 아이디 : `fossid` , 비밀번호 : `fossidlogin`  ]
 
 위 구성은 나중에 `fossid.conf` 파일의 `webapp_db_*` 에 추가해야 합니다. \
 강력하고 고유한 비밀번호를 사용하세요.
@@ -219,6 +220,7 @@ sudo systemctl enable --now mariadb.service
 sudo mysql -h localhost -e "CREATE DATABASE fossid_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;"
 ```
 
+\
 사용자를 생성합니다.
 
 ```
@@ -226,30 +228,33 @@ sudo mysql -h localhost -e "CREATE USER 'fossiduser'@'localhost' IDENTIFIED BY '
 sudo mysql -h localhost -e "GRANT ALL PRIVILEGES ON fossid_db.* TO 'fossiduser'@'localhost' WITH GRANT OPTION;"
 ```
 
+\
 사용하는 서버가 (MariaDB가 아닌) MySQL 서버인 경우 다음 추가 명령도 실행하세요.
 
 ```
 sudo mysql -h localhost -e "ALTER USER 'fossiduser'@'localhost' identified by '123';"
 ```
 
+\
 일부 시스템에서는 MariaDB가 mysql-server 패키지와 함께 설치됩니다. MySQL 서버가 설치되어 있는지 확인하려면 다음을 실행하세요.
 
 ```
 mysql --version
 ```
 
-MySQL이 설치된 경우의 출력 예:
+&#x20;MySQL이 설치된 경우의 출력 예:
 
 ```
 mysql  Ver 8.0.35 for Linux on x86_64
 ```
 
-MariaDB가 설치된 경우의 출력 예:
+* MariaDB가 설치된 경우의 출력 예:
 
 ```
 mysql  Ver 15.1 Distrib 10.6.15-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2
 ```
 
+\
 새로 만든 데이터베이스로 FossID 데이터베이스 스키마를 가져옵니다.
 
 ```
@@ -267,12 +272,12 @@ Workbench FossID 계정 관리자 비밀번호를 설정합니다. \
 mysql -h localhost -u fossiduser -e "update users set password_md5=md5('fossidlogin');" fossid_db -p'123'
 ```
 
-#### &#x20;<a href="#install-web-server" id="install-web-server"></a>
+
 
 #### 2. 웹 서버 설치 <a href="#install-web-server" id="install-web-server"></a>
 
 이 참조 설정에서는 NginX 웹 서버를 사용합니다. \
-다른 웹서버도 사용 가능하지만, FossID는 NginX를 사용하므로, 본 문서에서는 NginX 기준으로 가이드 및 설정을 제공합니다.
+다른 웹 서버도 사용 가능하지만, FossID는 NginX를 사용하므로, 본 문서에서는 NginX 기준으로 가이드 및 설정을 제공합니다.
 
 Nginx 설치:
 
@@ -293,12 +298,14 @@ sudo cp /fossid/setup/templates/nginx.conf.dist /etc/nginx/nginx.conf
 기본적으로 NginX는 PHP 요청을 php8.2 소켓으로 전달하도록 설정되어 있습니다. \
 다른 버전의 PHP가 설치되어 있는 경우 소켓 경로를 변경해야 합니다.
 
+\
 설치된 php 버전을 확인하려면 다음을 실행하세요.
 
 ```
 php --version
 ```
 
+\
 php 8.2가 아닌 경우, `/etc/nginx/nginx.conf`을 편집하여 다음 섹션을 찾으세요.
 
 ```
@@ -382,6 +389,7 @@ listen = /run/php/php8.3-fpm.sock
 
 phpX.Y-fpm 서비스가 실행 중이고 www-data 사용자가 접근할 수 있는지 확인하세요. 일부 시스템에서는 서비스 이름이 php-fpm과 다를 수 있습니다.
 
+\
 그룹 소유권을 변경한 `/var/lib/php`후 php-fpm을 다시 시작합니다.
 
 ```
@@ -389,6 +397,7 @@ sudo chgrp www-data -R /var/lib/php/
 sudo systemctl restart php-fpm
 ```
 
+\
 php-fpm 서비스를 시작합니다:
 
 ```
@@ -396,6 +405,7 @@ sudo systemctl start php-fpm
 sudo systemctl enable php-fpm
 ```
 
+\
 NginX 서비스를 다시 시작합니다.
 
 ```
@@ -403,6 +413,7 @@ sudo systemctl restart nginx
 sudo systemctl enable nginx
 ```
 
+\
 php 서비스 폴더의 그룹 소유권을 변경합니다.
 
 ```
@@ -457,8 +468,7 @@ webapp_db_password=123
 webapp_base_url = https://mycompany.com/index.php
 ```
 
-
-
+\
 fossid.conf 파일을 저장합니다.
 
 (참고: 구성 변경 사항은 즉시 적용되므로 재시작이 필요하지 않습니다.)
@@ -500,7 +510,7 @@ _관리자 비밀번호 구성_ 단계에서 생성한 사용자 이름 `fossid`
 
 #### \[참고 사항] <a href="#configure-git" id="configure-git"></a>
 
-#### Git 구성 <a href="#configure-git" id="configure-git"></a>
+#### ※ Git 구성 <a href="#configure-git" id="configure-git"></a>
 
 FossID Workbench는 Git 저장소에서 프로젝트 소스 코드를 직접 가져올 수 있는 API를 제공합니다. Workbench는 SSH를 통해 연결되며,  `www-data` 사용자가 사용할 수 있는 키가 필요합니다.
 
@@ -512,6 +522,7 @@ cat /etc/passwd |grep www-data|cut -d : -f 6
 
 출력은 `/var/www`와 유사합니다 .
 
+\
 홈 디렉토리에 .ssh라는 이름의 폴더를 만듭니다. (이전 명령의 출력이 `/var/www` 와 같다고 가정)
 
 ```
@@ -520,40 +531,45 @@ sudo mkdir /var/www/.ssh
 
 새로 만든 .ssh 폴더에 git 서버에서 신뢰하는 개인 키를 복사하세요.
 
+\
 git 저장소를 호스팅하는 서버를 알려진 호스트에 추가해야 합니다. 추가하려는 각 서버에 대해 다음 명령을 실행하세요.
 
 ```
 ssh-keyscan server_address >> /var/www/.ssh/known_hosts
 ```
 
+\
 www-data 사용자를 .ssh 폴더와 그 내용의 소유자로 지정합니다.
 
 ```
 chown -R www-data:www-data /var/www/.ssh
 ```
 
+\
 Git 저장소를 사용하여 새 스캔을 생성하는 API 호출 방법은 제품 설명서를 확인하세요. 설명서는 메뉴(문서)에서 확인할 수 있으며, 다음 URL에서 확인할 수 있습니다.
 
 [http://localhost/help/ko/index.html](http://localhost/help/en/index.html)\
 
 
-#### 종속성 분석 구성 <a href="#configure-dependency-analysis" id="configure-dependency-analysis"></a>
+#### ※ 종속성 분석 구성 <a href="#configure-dependency-analysis" id="configure-dependency-analysis"></a>
 
 FossID Workbench 사용자 인터페이스에서 바로 패키지 종속성 및 라이선스 정보를 제공하는 데 사용할 수 있는 FossID-DA 또는 OSS 검토 툴킷이라는 두 가지 도구가 있습니다. 종속성 분석 기능을 사용하면 소프트웨어가 준수해야 하는 라이선스에 대한 더 나은 통찰력을 얻을 수 있습니다. FossID는 종속성 분석 API도 제공하므로 지속적 통합 파이프라인에 포함할 수 있습니다.
 
 [자세한 빌드 및 설치 지침은 종속성 분석 설치를](https://www.auditoss.kr/help/en/installation/dependency-analysis.html) 참조하세요 .\
 
 
-#### 스캔 용량 구성 - 클라이언트 측 <a href="#configuring-scan-capacity---client-side" id="configuring-scan-capacity---client-side"></a>
+#### ※ 스캔 용량 구성 - 클라이언트 측 <a href="#configuring-scan-capacity---client-side" id="configuring-scan-capacity---client-side"></a>
 
 클라이언트 측에서는 스캔이 발행되는 방식을 구성하여 토큰별보다 더 세부적인 수준에서 스캔 용량을 분배할 수 있습니다.
 
+\
 다음 설정은 단일 Workbench 스캔이 시작할 수 있는 스캔 스레드 수를 제어할 수 있습니다.
 
 ```
 webapp_max_threads=8
 ```
 
+\
 동시 스캔 수는 다음 설정으로 제어할 수 있습니다.
 
 ```
@@ -562,6 +578,7 @@ webapp_max_concurrent_scans=3
 
 새로운 스캔을 시작하려고 할 때 최대 스캔 수가 이미 진행 중이면 해당 스캔은 대기열에 추가되고 현재 실행 중인 스캔 중 하나가 완료되면 자동으로 시작됩니다.
 
+\
 간헐적인 네트워크 지연으로 어려움을 겪고 있다면 일괄 검사를 실행하면 전반적인 사용자 경험이 향상될 수 있습니다. 사용자 인터페이스에서 더 나은 사용자 경험을 얻으려면 아래 설정에서 일괄 처리 크기를 줄이세요. 네트워크 지연을 보완하려면 일괄 처리 크기를 늘리세요.
 
 ```
