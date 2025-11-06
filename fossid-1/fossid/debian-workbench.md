@@ -143,8 +143,7 @@ MySQL 서버 배포판의 해당 파일(예: `/etc/mysql/my.cnf`  또는`/etc/my
 max_allowed_packet = 64M
 ```
 
-이는 Linux 배포판과 MySQL 서버 배포판에 따라 다를 수 있습니다. \
-해당 Linux 및 MySQL 버전 배포판의 설명서를 참조하세요.
+이는 Linux 배포판과 MySQL 서버 배포판에 따라 다를 수 있습니다. 해당 Linux 및 MySQL 버전 배포판의 설명서를 참조하세요.
 
 MySQL을 다시 시작합니다:
 
@@ -179,7 +178,7 @@ sudo mysql -h localhost -e "CREATE USER 'fossiduser'@'localhost' IDENTIFIED BY '
 sudo mysql -h localhost -e "GRANT ALL PRIVILEGES ON fossid_db.* TO 'fossiduser'@'localhost' WITH GRANT OPTION;"
 ```
 
-사용하는 서버가 MySQL 서버(MariaDB가 아닌)인 경우 다음 추가 명령도 실행하세요.
+사용하는 서버가 (MariaDB가 아닌) MySQL 서버인 경우 다음 추가 명령도 실행하세요.
 
 ```
 sudo mysql -h localhost -e "ALTER USER 'fossiduser'@'localhost' identified by '123';"
@@ -211,7 +210,7 @@ sudo mysql -u fossiduser -p'123' fossid_db < /fossid/setup/database/dbclean.sql
 ```
 
 \
-**\[ 관리자 비밀번호 구성 ]**
+**\[관리자 비밀번호 구성]**
 
 Workbench FossID 계정 관리자 비밀번호를 설정합니다. \
 (처음 로그인할 때 비밀번호는 argon2id와 md5 해시가 제거된 상태로 해시 됩니다.)
@@ -225,7 +224,7 @@ mysql -h localhost -u fossiduser -e "update users set password_md5=md5('fossidlo
 #### 2. 웹 서버 설치 <a href="#install-web-server" id="install-web-server"></a>
 
 이 참조 설정에서는 NginX 웹 서버를 사용합니다.\
-다른 웹서버도 자유롭게 사용할 수 있지만, FossID는 NginX를 사용하므로 설정을 도와드릴 수 있습니다.
+다른 웹서버도 사용 가능하지만, FossID는 NginX를 사용하므로, 본 문서에서는 NginX 기준으로 가이드 및 설정을 제공합니다.
 
 Nginx 설치:
 
@@ -297,7 +296,7 @@ HTTP를 활성화하는 방법에 대한 지침은 `nginx.conf` 템플릿 파일
 
 **(2) PHP 구성**
 
-Linux 배포판( `/etc/php-fpm.d/www.conf` 또는 `/etc/php/X.Y/fpm/pool.d/www.conf`)에 해당하는 `www.conf`파일을 편집 하고 다음 구성이 설정되어 있는지 확인하거나 샘플 파일(`/etc/php/X.Y/fpm/pool.d/www.conf`)을 Linux 배포판의 해당 위치로 복사합니다.
+Linux 배포판( `/etc/php-fpm.d/www.conf` 또는 `/etc/php/X.Y/fpm/pool.d/www.conf`)에 해당하는 `www.conf` 파일을 편집 하고 다음 구성이 설정되어 있는지 확인하거나 샘플 파일(`/etc/php/X.Y/fpm/pool.d/www.conf`)을 Linux 배포판의 해당 위치로 복사합니다.
 
 ```
 user = www-data
@@ -309,15 +308,17 @@ listen.mode = 0660
 ;listen.acl_users = apache,nginx   <-- make sure it's commented out.
 ```
 
-`listen = /run/php/php8.2-fpm.sock`php의 올바른 버전을 가리키도록 변경하세요 . \
+
+
+PHP의 올바른 버전을 확인한 후, 해당 버전에 맞게 `listen = /run/php/php<버전>-fpm.sock` 항목을 수정합니다.
+
 예를 들어, php 버전이 8.3라면 다음과 같은 줄을 작성해야 합니다.
 
 ```
 listen = /run/php/php8.3-fpm.sock
 ```
 
-phpX.Y-fpm 서비스가 실행 중이고 www-data 사용자가 접근할 수 있는지 확인하세요. \
-일부 시스템에서는 서비스 이름이 php-fpm과 다를 수 있습니다.
+phpX.Y-fpm 서비스가 실행 중이고 www-data 사용자가 접근할 수 있는지 확인하세요. 일부 시스템에서는 서비스 이름이 php-fpm과 다를 수 있습니다.
 
 그룹 소유권을 변경한 `/var/lib/php`후 php-fpm을 다시 시작합니다.
 
@@ -391,7 +392,7 @@ webapp_base_url = https://mycompany.com/index.php
 
 fossid.conf 파일을 저장합니다.
 
-참고: 구성 변경 사항은 즉시 적용되므로 재시작이 필요하지 않습니다.
+(참고: 구성 변경 사항은 즉시 적용되므로 재시작이 필요하지 않습니다.)
 
 ***
 
@@ -422,9 +423,9 @@ php licenseupdate.php /fossid/etc/fossid.conf
 
 [http://localhost/](http://localhost/) 로 이동합니다
 
-[관리자 비밀번호 구성](#user-content-fn-1)[^1] 단계에서 생성한 사용자 이름 `fossid`과 비밀번호로 로그인합니다 .
+_관리자 비밀번호 구성_ 단계에서 생성한 사용자 이름 `fossid`과 비밀번호로 로그인합니다 .
 
-참고: FossID Workbench는 공식적으로 Chrome 브라우저에서 지원됩니다.
+(참고: FossID Workbench는 공식적으로 Chrome 브라우저에서 지원됩니다.)
 
 ***
 
@@ -525,6 +526,4 @@ webapp_max_concurrent_scans=3
 webapp_max_files_per_thread=16
 ```
 
-If you are experiencing difficulties please see [troubleshooting page](troubleshooting.md).
-
-[^1]: 
+어려움을 겪고 계신다면 [문제 해결](undefined.md) 페이지를 참조하시기 바랍니다.
