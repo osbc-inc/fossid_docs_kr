@@ -57,7 +57,7 @@ Workbench를 사용하려면 호스트 환경의 locale에서 "en\_US.utf8"을 �
 시스템에서 현재 사용 가능한 locale을 표시하려면:
 
 ```
-locale -a
+locale -a | grep en_US
 ```
 
 "en\_US.utf8"이 없으면 추가해야 합니다.
@@ -200,7 +200,7 @@ sudo systemctl enable --now mariadb.service
 
 
 
-**(참고) MySQL 구성**
+<mark style="color:$info;">(참고) MySQL 구성</mark>
 
 * 데이터베이스 : `fossid_db`
 * 사용자 : `fossiduser`,   비밀번호 : `123`
@@ -328,7 +328,7 @@ fastcgi_pass unix:/run/php/php8.3-fpm.sock;
 
 
 
-**(선택 사항) HTTPs 활성화**
+<mark style="color:$info;">(선택 사항) HTTPs 활성화</mark>
 
 HTTP를 활성화하는 방법에 대한 지침은 `nginx.conf` 템플릿 파일에서 확인하세요 .
 
@@ -365,7 +365,8 @@ sudo mkdir -p /run/php
 d /run/php 0755 root root -
 ```
 
-Linux 배포판( `/etc/php-fpm.d/www.conf` 또는 `/etc/php/X.Y/fpm/pool.d/www.conf`)에 해당하는 `www.conf` 파일을 편집 하고 다음 구성이 설정되어 있는지 확인하거나 샘플 파일(`/etc/php/X.Y/fpm/pool.d/www.conf`)을 Linux 배포판의 해당 위치로 복사합니다.
+Linux 배포판에 해당하는 `www.conf`  파일을 편집 하고, 다음 구성이 설정되어 있는지 확인하거나 샘플 파일(`/etc/php/X.Y/fpm/pool.d/www.conf`)을 Linux 배포판의 해당 위치로 복사합니다.\
+(`www.conf`  파일 위치 : `/etc/php-fpm.d/www.conf` 또는 `/etc/php/X.Y/fpm/pool.d/www.conf`)&#x20;
 
 ```
 user = www-data
@@ -426,7 +427,7 @@ sudo chgrp www-data -R /var/lib/php
 
 #### \[기본 fossid.conf 설정] <a href="#basic-fossidconf-settings" id="basic-fossidconf-settings"></a>
 
-FossID 구성 파일은 `/fossid/etc/fossid.conf`.에 있습니다.
+FossID 구성 파일은 `/fossid/etc/fossid.conf`에 있습니다.
 
 
 
@@ -460,9 +461,10 @@ webapp_db_password=123
 
 
 
-**※  워크벤치 URL 구성**
+**※  Workbench URL 구성**
 
-이 정보는 이메일에서 올바른 절대 URL을 생성하는 데 사용됩니다.
+이 정보는 이메일에서 올바른 절대 URL을 생성하는 데 사용됩니다.\
+(https://mycompany.com 부분은 실제 사용 중인 FossID 서버의 접속 URL로 바꾸어 입력합니다.)
 
 ```
 webapp_base_url = https://mycompany.com/index.php
@@ -508,7 +510,7 @@ _관리자 비밀번호 구성_ 단계에서 생성한 사용자 이름 `fossid`
 
 ***
 
-#### \[참고 사항] <a href="#configure-git" id="configure-git"></a>
+#### <mark style="color:$info;">\[참고 사항]</mark> <a href="#configure-git" id="configure-git"></a>
 
 #### ※ Git 구성 <a href="#configure-git" id="configure-git"></a>
 

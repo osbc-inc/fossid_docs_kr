@@ -156,7 +156,7 @@ sudo service mysql restart
 ```
 
 \
-**(참고) MySQL 구성**
+<mark style="color:$info;">(참고) MySQL 구성</mark>
 
 * 데이터베이스 : `fossid_db`
 * 사용자 : `fossiduser`,   비밀번호 : `123`
@@ -199,13 +199,13 @@ MySQL 서버가 설치되어 있는지 확인하려면 다음을 실행하세요
 mysql --version
 ```
 
-* MySQL이 설치된 경우의 출력 예:
+* <mark style="color:$info;">MySQL이 설치된 경우의 출력 예:</mark>
 
 ```
 mysql  Ver 8.0.35 for Linux on x86_64
 ```
 
-* MariaDB가 설치된 경우의 출력 예:
+* <mark style="color:$info;">MariaDB가 설치된 경우의 출력 예:</mark>
 
 ```
 mysql  Ver 15.1 Distrib 10.6.15-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2
@@ -276,7 +276,7 @@ location = /index.php {
 
 `fastcgi_pass unix:/run/php/php8.2-fpm.sock;`부분에서 php의 올바른 버전으로 변경하세요.
 
-예를 들어, php 버전이 8.3라면 다음과 같이 변경이 필요합니다.
+예를 들어, php 버전이 **8.3**라면 다음과 같이 변경이 필요합니다.
 
 ```
 fastcgi_pass unix:/run/php/php8.3-fpm.sock;
@@ -284,7 +284,7 @@ fastcgi_pass unix:/run/php/php8.3-fpm.sock;
 
 
 
-**(선택사항) HTTPs 활성화**
+<mark style="color:$info;">(선택사항) HTTPs 활성화</mark>
 
 HTTP를 활성화하는 방법에 대한 지침은 `nginx.conf` 템플릿 파일에서 확인하세요 .
 
@@ -309,7 +309,8 @@ HTTP를 활성화하는 방법에 대한 지침은 `nginx.conf` 템플릿 파일
 
 **(2) PHP 구성**
 
-Linux 배포판( `/etc/php-fpm.d/www.conf` 또는 `/etc/php/X.Y/fpm/pool.d/www.conf`)에 해당하는 `www.conf` 파일을 편집 하고 다음 구성이 설정되어 있는지 확인하거나 샘플 파일(`/etc/php/X.Y/fpm/pool.d/www.conf`)을 Linux 배포판의 해당 위치로 복사합니다.
+Linux 배포판에 해당하는 `www.conf`  파일을 편집 하고, 다음 구성이 설정되어 있는지 확인하거나 샘플 파일(`/etc/php/X.Y/fpm/pool.d/www.conf`)을 Linux 배포판의 해당 위치로 복사합니다.\
+(`www.conf`  파일 위치 : `/etc/php-fpm.d/www.conf` 또는 `/etc/php/X.Y/fpm/pool.d/www.conf`)&#x20;
 
 ```
 user = www-data
@@ -367,7 +368,7 @@ sudo chgrp www-data -R /var/lib/php
 
 #### **\[**&#xAE30;본 fossid.conf 설정] <a href="#basic-fossidconf-settings" id="basic-fossidconf-settings"></a>
 
-FossID 구성 파일은 `/fossid/etc/fossid.conf`.에 있습니다.\
+FossID 구성 파일은 `/fossid/etc/fossid.conf`에 있습니다.\
 
 
 **※ 스캔 서버 액세스 구성**
@@ -399,9 +400,11 @@ webapp_db_password=123
 ```
 
 \
-**※ 워크벤치 URL 구성**
+**※ Workbench URL 구성**
 
 이 정보는 이메일에서 올바른 절대 URL을 생성하는 데 사용됩니다.
+
+(https://mycompany.com 부분은 실제 사용 중인 FossID 서버의 접속 URL로 바꾸어 입력합니다.)
 
 ```
 webapp_base_url = https://mycompany.com/index.php
@@ -447,7 +450,7 @@ _관리자 비밀번호 구성_ 단계에서 생성한 사용자 이름 `fossid`
 
 ***
 
-#### \[참고 사항]  <a href="#configure-git" id="configure-git"></a>
+#### <mark style="color:$info;">\[참고 사항]</mark>  <a href="#configure-git" id="configure-git"></a>
 
 #### ※ Git 구성 <a href="#configure-git" id="configure-git"></a>
 
