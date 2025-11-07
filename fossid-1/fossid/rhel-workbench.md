@@ -1,7 +1,3 @@
----
-hidden: true
----
-
 # RHEL의 Workbench 서버
 
 ### \[안내] <a href="#assumptions" id="assumptions"></a>

@@ -1,12 +1,8 @@
----
-hidden: true
----
-
 # 문제 해결
 
 ### \[ 문제 해결 ] <a href="#troubleshooting" id="troubleshooting"></a>
 
-#### ※ PHP - Workbench가 제대로 표시되지 않습니다. <a href="#php---workbench-not-showing-properly" id="php---workbench-not-showing-properly"></a>
+#### <mark style="background-color:$info;">※ PHP - Workbench가 제대로 표시되지 않습니다.</mark> <a href="#php---workbench-not-showing-properly" id="php---workbench-not-showing-properly"></a>
 
 고객 사이트에서 PHP가 제대로 설치되지 않은 사례가 보고되었습니다.\
 Workbench에 예상대로 표시되지 않는 경우, 다음 항목이 올바르게 설치되어 있는지 확인하세요.
@@ -68,9 +64,11 @@ Debian 및/또는 Ubuntu 시스템에서 PHP 업그레이드 시 구성이 손�
     sudo apt remove php8.2\*
     ```
 
+
+
 ***
 
-#### ※ MySQL 8은 `mysql_native_passwords` 사용에 대해 불만을 제기합니다. <a href="#mysql-8-complains-about-using-mysql_native_passwords" id="mysql-8-complains-about-using-mysql_native_passwords"></a>
+#### <mark style="background-color:$info;">※ MySQL 8은</mark> <mark style="background-color:$info;"></mark><mark style="background-color:$info;">`mysql_native_passwords`</mark> <mark style="background-color:$info;"></mark><mark style="background-color:$info;">사용에 대해 불만을 제기합니다.</mark> <a href="#mysql-8-complains-about-using-mysql_native_passwords" id="mysql-8-complains-about-using-mysql_native_passwords"></a>
 
 일부 경우에는 이전 버전에서 mySQL 8로 업그레이드하면 로그에 다음과 같은 메시지가 표시됩니다:
 
@@ -103,9 +101,11 @@ mysql> select User, plugin from mysql.user;
 mysql> ALTER USER 'fossid'@'%' IDENTIFIED WITH caching_sha2_password BY 'MY_NEW_STRONG_PASSWORD';
 ```
 
+
+
 ***
 
-#### ※ Timeout 관련 문제 <a href="#timeout-related-issues" id="timeout-related-issues"></a>
+#### <mark style="background-color:$info;">※ Timeout 관련 문제</mark> <a href="#timeout-related-issues" id="timeout-related-issues"></a>
 
 Nginx, PHP-FPM 및 PHP 설정에서 시간 초과 매개변수 값을 낮게 설정하면 다양한 문제가 발생할 수 있으며, 특히 장시간 실행되는 프로세스나 대용량 파일 업로드를 처리할 때 문제가 발생할 수 있습니다.&#x20;
 
