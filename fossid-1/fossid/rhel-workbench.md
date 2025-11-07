@@ -27,9 +27,9 @@ hidden: true
 
 ***
 
-### \[시스템 전체 설정에 대한 전제 조건] <a href="#prerequisites-on-system-wide-settings" id="prerequisites-on-system-wide-settings"></a>
+### <mark style="background-color:$primary;">\[시스템 전체 설정에 대한 전제 조건]</mark> <a href="#prerequisites-on-system-wide-settings" id="prerequisites-on-system-wide-settings"></a>
 
-#### 1. 방화벽 포트 열기 <a href="#open-firewall-ports" id="open-firewall-ports"></a>
+#### <mark style="background-color:$info;">1. 방화벽 포트 열기</mark> <a href="#open-firewall-ports" id="open-firewall-ports"></a>
 
 ```
 sudo firewall-cmd --add-service=http --zone=public --permanent
@@ -38,7 +38,7 @@ sudo firewall-cmd --add-service=https --zone=public --permanent
 
 
 
-#### 2. SELINUX <a href="#selinux" id="selinux"></a>
+#### <mark style="background-color:$info;">2. SELINUX</mark> <a href="#selinux" id="selinux"></a>
 
 SELINUX를 비활성화한 후 시스템을 재부팅하세요.
 
@@ -50,7 +50,7 @@ FossID에는 아직 SELinux 정책이 없기 때문에 비활성화 필요합니
 
 
 
-#### 3. en\_US.UTF-8 Locale <a href="#en_usutf-8-locale" id="en_usutf-8-locale"></a>
+#### <mark style="background-color:$info;">3. en\_US.UTF-8 Locale</mark> <a href="#en_usutf-8-locale" id="en_usutf-8-locale"></a>
 
 Workbench를 사용하려면 호스트 환경의 locale에서 "en\_US.utf8"을 사용할 수 있어야 합니다.
 
@@ -64,9 +64,9 @@ locale -a | grep en_US
 
 
 
-#### 4.  FossID Workbench에 필요한 패키지 <a href="#packages-required-by-the-fossid-workbench" id="packages-required-by-the-fossid-workbench"></a>
+#### <mark style="background-color:$info;">4.  FossID Workbench에 필요한 패키지</mark> <a href="#packages-required-by-the-fossid-workbench" id="packages-required-by-the-fossid-workbench"></a>
 
-**\[저장소 추가]**
+<mark style="background-color:$info;">**\[저장소 추가]**</mark>
 
 **※ RedHat의 Epel 저장소**
 
@@ -99,7 +99,7 @@ sudo yum install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
 
 
 
-**\[패키지 설치]**
+<mark style="background-color:$info;">**\[패키지 설치]**</mark>
 
 원하는 PHP 버전을 설정합니다(최소 필요 버전은 8.2입니다).
 
@@ -126,17 +126,19 @@ sudo yum install bash bzip2 coreutils curl findutils git glibc grep gzip java-11
             sudo tar unzip vim wget xz zip -y
 ```
 
-참고: RedHat에서는 unrar가 표준 저장소에 배포되지 않습니다. 하지만 회사에서 unrar 패키지에 대한 라이선스를 보유하고 있을 수 있습니다. FossID Workbench에서 rar 파일을 추출해야 하는 경우, 시스템 관리자에게 unrar 패키지가 있는지 문의하십시오.
+**참고:** Red Hat에서는 `unrar` 패키지가 기본 저장소에 포함되어 있지 않습니다.\
+다만, 회사에서 `unrar` 패키지의 라이선스를 보유하고 있을 수 있습니다.\
+FossID Workbench에서 RAR 파일을 추출해야 하는 경우, 시스템 관리자에게 `unrar` 패키지 보유 여부를 확인하십시오.
 
 ***
 
-### \[액세스 제공물] <a href="#access-deliverables" id="access-deliverables"></a>
+### <mark style="background-color:$primary;">\[액세스 제공물]</mark> <a href="#access-deliverables" id="access-deliverables"></a>
 
 FossID deliverables에 대한 접근 정보는 **delivery mail**에 포함되어 있습니다.
 
 &#x20;delivery portal에서 `fossid-release_regular.x86_64.rpm`를 다운로드하세요 .
 
-#### FossID 제공물 설치 <a href="#install-fossid-deliverable" id="install-fossid-deliverable"></a>
+#### <mark style="background-color:$info;">FossID 제공물 설치</mark> <a href="#install-fossid-deliverable" id="install-fossid-deliverable"></a>
 
 FossID 설치:
 
@@ -145,9 +147,9 @@ FossID 설치:
 
 ***
 
-### \[데이터베이스 및 웹 서버 설치] <a href="#database-and-web-server-installation" id="database-and-web-server-installation"></a>
+### <mark style="background-color:$primary;">\[데이터베이스 및 웹 서버 설치]</mark> <a href="#database-and-web-server-installation" id="database-and-web-server-installation"></a>
 
-#### 1. MySQL/MariaDB 설치 <a href="#install-mysqlmariadb" id="install-mysqlmariadb"></a>
+#### <mark style="background-color:$info;">1. MySQL/MariaDB 설치</mark> <a href="#install-mysqlmariadb" id="install-mysqlmariadb"></a>
 
 ```
 sudo yum install -y mariadb mariadb-server
@@ -171,7 +173,7 @@ MySQL 복제의 경우, 매개변수  `default_collation_for_utf8mb4` 는  `utf8
 자세한 내용은 [https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar\_default\_collation\_for\_utf8mb4](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_default_collation_for_utf8mb4)를 참조하세요.\
 
 
-#### (1) 서버 구성 업데이트 <a href="#update-server-configuration" id="update-server-configuration"></a>
+#### <mark style="background-color:$info;">(1) 서버 구성 업데이트</mark> <a href="#update-server-configuration" id="update-server-configuration"></a>
 
 MySQL 서버 배포판의 해당 파일(예: `/etc/mysql/my.cnf`  또는`/etc/my.cnf`)에서 `max_allowed_packet` 에 대해  `64M` 이상의 값을 `[mysqld]` 태그 아래에 설정해야 합니다.
 
@@ -212,7 +214,7 @@ sudo systemctl enable --now mariadb.service
 
 
 
-**\[MySQL 인스턴스 설정]**
+<mark style="background-color:$info;">**\[MySQL 인스턴스 설정]**</mark>
 
 데이터베이스를 생성합니다:
 
@@ -239,16 +241,16 @@ sudo mysql -h localhost -e "ALTER USER 'fossiduser'@'localhost' identified by '1
 일부 시스템에서는 MariaDB가 mysql-server 패키지와 함께 설치됩니다. MySQL 서버가 설치되어 있는지 확인하려면 다음을 실행하세요.
 
 ```
-mysql --version
+mysql --version  
 ```
 
-&#x20;MySQL이 설치된 경우의 출력 예:
+* <mark style="color:$info;">MySQL이 설치된 경우의 출력 예:</mark>
 
 ```
 mysql  Ver 8.0.35 for Linux on x86_64
 ```
 
-* MariaDB가 설치된 경우의 출력 예:
+* <mark style="color:$info;">MariaDB가 설치된 경우의 출력 예:</mark>
 
 ```
 mysql  Ver 15.1 Distrib 10.6.15-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2
@@ -263,7 +265,7 @@ sudo mysql -u fossiduser -p'123' fossid_db < /fossid/setup/database/dbclean.sql
 
 
 
-**\[관리자 비밀번호 구성]**
+<mark style="background-color:$info;">**\[관리자 비밀번호 구성]**</mark>
 
 Workbench FossID 계정 관리자 비밀번호를 설정합니다. \
 (처음 로그인할 때 비밀번호는 argon2id와 md5 해시가 제거된 상태로 해시 됩니다.)
@@ -274,7 +276,7 @@ mysql -h localhost -u fossiduser -e "update users set password_md5=md5('fossidlo
 
 
 
-#### 2. 웹 서버 설치 <a href="#install-web-server" id="install-web-server"></a>
+#### <mark style="background-color:$info;">2. 웹 서버 설치</mark> <a href="#install-web-server" id="install-web-server"></a>
 
 이 참조 설정에서는 NginX 웹 서버를 사용합니다. \
 다른 웹 서버도 사용 가능하지만, FossID는 NginX를 사용하므로, 본 문서에서는 NginX 기준으로 가이드 및 설정을 제공합니다.
@@ -287,7 +289,7 @@ sudo yum install nginx -y
 
 
 
-**(1) NginX 구성**
+<mark style="background-color:$info;">**(1) NginX 구성**</mark>
 
 샘플 `/fossid/setup/templatesnginx.conf.dist`을  `/etc/nginx/nginx.conf` 로 복사합니다 :
 
@@ -351,7 +353,7 @@ HTTP를 활성화하는 방법에 대한 지침은 `nginx.conf` 템플릿 파일
 
 
 
-**(2) PHP 구성**
+<mark style="background-color:$info;">**(2) PHP 구성**</mark>
 
 `/run/php` 디렉토리가 없으면 생성합니다 .
 
@@ -423,9 +425,9 @@ sudo chgrp www-data -R /var/lib/php
 
 ***
 
-### \[FossID 구성] <a href="#configure-fossid" id="configure-fossid"></a>
+### <mark style="background-color:$primary;">\[FossID 구성]</mark> <a href="#configure-fossid" id="configure-fossid"></a>
 
-#### \[기본 fossid.conf 설정] <a href="#basic-fossidconf-settings" id="basic-fossidconf-settings"></a>
+#### <mark style="background-color:$info;">\[기본 fossid.conf 설정]</mark> <a href="#basic-fossidconf-settings" id="basic-fossidconf-settings"></a>
 
 FossID 구성 파일은 `/fossid/etc/fossid.conf`에 있습니다.
 
@@ -477,7 +479,7 @@ fossid.conf 파일을 저장합니다.
 
 ***
 
-#### \[설치 완료] <a href="#finalize-installation" id="finalize-installation"></a>
+#### <mark style="background-color:$primary;">\[설치 완료]</mark> <a href="#finalize-installation" id="finalize-installation"></a>
 
 데이터베이스가 성공적으로 생성되었는지 확인하고 추가 인덱스를 추가합니다.
 
@@ -500,7 +502,7 @@ php licenseupdate.php /fossid/etc/fossid.conf
 
 ***
 
-#### \[Workbench 접근 확인] <a href="#verify-workbench-access" id="verify-workbench-access"></a>
+#### <mark style="background-color:$primary;">\[Workbench 접근 확인]</mark> <a href="#verify-workbench-access" id="verify-workbench-access"></a>
 
 [http://localhost/](http://localhost/) 로 이동합니다
 
@@ -510,9 +512,9 @@ _관리자 비밀번호 구성_ 단계에서 생성한 사용자 이름 `fossid`
 
 ***
 
-#### <mark style="color:$info;">\[참고 사항]</mark> <a href="#configure-git" id="configure-git"></a>
+#### <mark style="color:$info;background-color:$info;">\[참고 사항]</mark> <a href="#configure-git" id="configure-git"></a>
 
-#### ※ Git 구성 <a href="#configure-git" id="configure-git"></a>
+#### <mark style="color:$info;">※ Git 구성</mark> <a href="#configure-git" id="configure-git"></a>
 
 FossID Workbench는 Git 저장소에서 프로젝트 소스 코드를 직접 가져올 수 있는 API를 제공합니다. Workbench는 SSH를 통해 연결되며,  `www-data` 사용자가 사용할 수 있는 키가 필요합니다.
 
@@ -553,14 +555,14 @@ Git 저장소를 사용하여 새 스캔을 생성하는 API 호출 방법은 �
 [http://localhost/help/ko/index.html](http://localhost/help/en/index.html)\
 
 
-#### ※ 종속성 분석 구성 <a href="#configure-dependency-analysis" id="configure-dependency-analysis"></a>
+#### <mark style="color:$info;">※ 종속성 분석 구성</mark> <a href="#configure-dependency-analysis" id="configure-dependency-analysis"></a>
 
 FossID Workbench 사용자 인터페이스에서 바로 패키지 종속성 및 라이선스 정보를 제공하는 데 사용할 수 있는 FossID-DA 또는 OSS 검토 툴킷이라는 두 가지 도구가 있습니다. 종속성 분석 기능을 사용하면 소프트웨어가 준수해야 하는 라이선스에 대한 더 나은 통찰력을 얻을 수 있습니다. FossID는 종속성 분석 API도 제공하므로 지속적 통합 파이프라인에 포함할 수 있습니다.
 
 [자세한 빌드 및 설치 지침은 종속성 분석 설치를](https://www.auditoss.kr/help/en/installation/dependency-analysis.html) 참조하세요 .\
 
 
-#### ※ 스캔 용량 구성 - 클라이언트 측 <a href="#configuring-scan-capacity---client-side" id="configuring-scan-capacity---client-side"></a>
+#### <mark style="color:$info;">※ 스캔 용량 구성 - 클라이언트 측</mark> <a href="#configuring-scan-capacity---client-side" id="configuring-scan-capacity---client-side"></a>
 
 클라이언트 측에서는 스캔이 발행되는 방식을 구성하여 토큰별보다 더 세부적인 수준에서 스캔 용량을 분배할 수 있습니다.
 
