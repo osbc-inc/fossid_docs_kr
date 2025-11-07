@@ -374,9 +374,13 @@ sudo chgrp www-data -R /var/lib/php
 
 #### <mark style="background-color:yellow;">**\[**</mark><mark style="background-color:yellow;">기본 fossid.conf 설정]</mark> <a href="#basic-fossidconf-settings" id="basic-fossidconf-settings"></a>
 
-FossID 구성 파일은 `/fossid/etc/fossid.conf`에 있습니다.\
+FossID 구성 파일은 `/fossid/etc/fossid.conf`에 위치하며, 아래 구성항목들을 설정해야 합니다.
 
+```
+sudo vi /fossid/etc/fossid.conf
+```
 
+\
 **※ 스캔 서버 액세스 구성**
 
 ```
@@ -410,7 +414,7 @@ webapp_db_password=123
 
 이 정보는 이메일에서 올바른 절대 URL을 생성하는 데 사용됩니다.
 
-(https://mycompany.com 부분은 실제 사용 중인 FossID 서버의 접속 URL로 바꾸어 입력합니다.)
+(**https://mycompany.com** 부분은 실제 사용 중인 FossID 서버의 접속 URL로 바꾸어 입력합니다.)
 
 ```
 webapp_base_url = https://mycompany.com/index.php

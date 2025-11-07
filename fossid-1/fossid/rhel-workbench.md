@@ -462,10 +462,13 @@ sudo chgrp www-data -R /var/lib/php
 
 #### <mark style="background-color:yellow;">\[기본 fossid.conf 설정]</mark> <a href="#basic-fossidconf-settings" id="basic-fossidconf-settings"></a>
 
-FossID 구성 파일은 `/fossid/etc/fossid.conf`에 있습니다.
+FossID 구성 파일은 `/fossid/etc/fossid.conf`에 위치하며, 아래 구성 항목들을 설정해야 합니다.
 
+```
+sudo vi /fossid/etc/fossid.conf
+```
 
-
+\
 **※ 스캔 서버 액세스 구성**
 
 ```
