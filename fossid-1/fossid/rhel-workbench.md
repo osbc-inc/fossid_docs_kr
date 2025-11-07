@@ -34,15 +34,33 @@ sudo firewall-cmd --add-service=https --zone=public --permanent
 
 
 
+* 아래 명령어를 통해 HTTP 및 HTTPS 방화벽 규칙이 정상적으로 적용되었는지 확인합니다.
+
+```
+sudo firewall-cmd --reload
+sudo firewall-cmd --list-all
+```
+
+
+
 #### <mark style="background-color:yellow;">2. SELINUX</mark> <a href="#selinux" id="selinux"></a>
 
-SELINUX를 비활성화한 후 시스템을 재부팅하세요.
+FossID에는 아직 SELinux 정책이 없기 때문에 비활성화가 필요합니다.
+
+\
+아래 명령어를 통해 SELinux 설정 파일을 열고, `SELINUX=disabled`로 수정하여 **SELinux를 비활성화**합니다.
 
 ```
 sudo vi /etc/selinux/config
 ```
 
-FossID에는 아직 SELinux 정책이 없기 때문에 비활성화가 필요합니다.
+\
+아래 명령어를 통해 **시스템을 재부팅한 뒤, SELinux 비활성화가 정상적으로 적용되었는지 확인**합니다.
+
+```
+sudo reboot
+sestatus
+```
 
 
 
@@ -81,13 +99,13 @@ sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noa
 \
 **※ Remi의 RPM 저장소**
 
-Redhat 8의 경우
+**Redhat 8**의 경우
 
 ```
 sudo yum install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 ```
 
-Redhat 9의 경우
+**Redhat 9**의 경우
 
 ```
 sudo yum install -y https://rpms.remirepo.net/enterprise/remi-release-9.rpm
@@ -104,7 +122,7 @@ sudo yum module reset php
 sudo yum module enable php:remi-8.2 -y
 ```
 
-**레드햇 8**
+**RedHat 8**
 
 ```
 sudo yum install bash bzip2 coreutils curl findutils git glibc grep gzip java-11-openjdk-headless \
@@ -113,7 +131,7 @@ sudo yum install bash bzip2 coreutils curl findutils git glibc grep gzip java-11
             sudo tar unzip vim wget xz zip -y
 ```
 
-**레드햇 9**
+**RedHat 9**
 
 ```
 sudo yum install bash bzip2 coreutils curl findutils git glibc grep gzip java-11-openjdk-headless \
@@ -171,17 +189,16 @@ MySQL 복제의 경우, 매개변수  `default_collation_for_utf8mb4` 는  `utf8
 
 #### <mark style="background-color:yellow;">(1) 서버 구성 업데이트</mark> <a href="#update-server-configuration" id="update-server-configuration"></a>
 
-MySQL 서버 배포판의 해당 파일(예: `/etc/mysql/my.cnf`  또는`/etc/my.cnf`)에서 `max_allowed_packet` 에 대해  `64M` 이상의 값을 `[mysqld]` 태그 아래에 설정해야 합니다.
+MySQL 서버 배포판의 해당 파일(예: `/etc/mysql/my.cnf`  또는 `/etc/my.cnf.d/mariadb-server.cnf`  등)에서 `max_allowed_packet` 에 대해  `64M` 이상의 값을 `[mysqld]` 태그 아래에 설정해야 합니다.
 
-아래를 참조하세요.
+아래를 참조하여, 설정을 추가하세요.
 
 ```
 [mysqld]
 max_allowed_packet = 64M
 ```
 
-이는 Linux 배포판과 MySQL 서버 배포판에 따라 다를 수 있습니다. 해당 Linux 및 MySQL 버전 배포판의 설명서를 참조하세요.
-
+이는 Linux 배포판과 MySQL 서버 배포판에 따라 다를 수 있습니다. 해당 Linux 및 MySQL 버전 배포판의 설명서를 참조하세요.\
 
 
 데이터베이스 서비스를 시작하고 활성화합니다.
@@ -304,7 +321,7 @@ php --version
 ```
 
 \
-php 8.2가 아닌 경우, `/etc/nginx/nginx.conf`을 편집하여 다음 섹션을 찾으세요.
+PHP 버전이 8.2가 아닐 경우, `/etc/nginx/nginx.conf` 을 편집하여 다음 섹션을 찾으세요.
 
 ```
 location = /index.php {
@@ -318,7 +335,7 @@ location = /index.php {
 
 `fastcgi_pass unix:/run/php/php8.2-fpm.sock;`부분에서 php의 올바른 버전으로 변경하세요.
 
-예를 들어, php 버전이 8.3라면 다음과 같이 변경이 필요합니다.
+예를 들어, php 버전이 **8.3**라면 다음과 같이 변경이 필요합니다.
 
 ```
 fastcgi_pass unix:/run/php/php8.3-fpm.sock;
@@ -357,14 +374,34 @@ HTTP를 활성화하는 방법에 대한 지침은 `nginx.conf` 템플릿 파일
 sudo mkdir -p /run/php
 ```
 
-시스템이 부팅 시 /run/php 디렉토리가 존재하는지 확인하려면, 다음 내용을 포함하는 `/usr/lib/tmpfiles.d/php.conf` 파일을 만드세요.
+\
+시스템이 부팅 시 /run/php 디렉토리가 존재하는지 확인하려면, `/usr/lib/tmpfiles.d/php.conf` 파일을 생성한 후 아래 설정을 추가합니다.
+
+```
+sudo vi /usr/lib/tmpfiles.d/php.conf 
+```
+
+\
+**\[php.conf 파일 내 설정]**
 
 ```
 d /run/php 0755 root root -
 ```
 
-Linux 배포판에 해당하는 `www.conf`  파일을 편집 하고, 다음 구성이 설정되어 있는지 확인하거나 샘플 파일(`/etc/php/X.Y/fpm/pool.d/www.conf`)을 Linux 배포판의 해당 위치로 복사합니다.\
-(`www.conf`  파일 위치 : `/etc/php-fpm.d/www.conf` 또는 `/etc/php/X.Y/fpm/pool.d/www.conf`)&#x20;
+
+
+아래 **\[www.conf 설정]** 이 설정되어 있는지 확인하거나, 샘플 파일(`/etc/php/X.Y(버전)/fpm/pool.d/www.conf`)을 `/etc/php-fpm.d/www.conf`로 복사한 후 Linux 배포판에 해당하는 `www.conf`  파일을 편집합니다.
+
+* `www.conf`  샘플 파일 위치 :  `/fossid/setup/templates/www.conf.dist`
+* `www.conf`  복사 위치 :  `/etc/php/X.Y(버전)/fpm/pool.d/www.conf`  또는 `/etc/php-fpm.d/www.conf`
+
+```
+sudo cp /fossid/setup/templates/www.conf /etc/php-fpm.d/www.conf
+vi  /etc/php-fpm.d/www.conf
+```
+
+\
+\[**www.conf 설정]**
 
 ```
 user = www-data
@@ -376,8 +413,6 @@ listen.mode = 0660
 ;listen.acl_users = apache,nginx   <-- make sure it's commented out.
 ```
 
-
-
 PHP의 올바른 버전을 확인한 후, 해당 버전에 맞게 `listen = /run/php/php<버전>-fpm.sock` 항목을 수정합니다.
 
 예를 들어, php 버전이 8.3라면 다음과 같은 줄을 작성해야 합니다.
@@ -388,6 +423,7 @@ listen = /run/php/php8.3-fpm.sock
 
 phpX.Y-fpm 서비스가 실행 중이고 www-data 사용자가 접근할 수 있는지 확인하세요. 일부 시스템에서는 서비스 이름이 php-fpm과 다를 수 있습니다.
 
+\
 \
 그룹 소유권을 변경한 `/var/lib/php`후 php-fpm을 다시 시작합니다.
 

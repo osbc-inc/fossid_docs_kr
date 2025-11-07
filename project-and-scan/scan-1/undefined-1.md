@@ -64,4 +64,4 @@
 4.  이후 'Remove from Marked as Identified' 버튼을 클릭하면 선택된 폴더 하위의 파일 상태 값이 'Pending id'로 변경됩니다.\
 
 
-    <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>

@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # FossID 설치 가이드
 
 <mark style="color:red;background-color:red;">**FossID**</mark> <mark style="color:red;background-color:red;">**2025.1.2**</mark> 버전이 출시되었습니다.

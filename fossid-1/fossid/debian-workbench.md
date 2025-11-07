@@ -305,8 +305,18 @@ HTTP를 활성화하는 방법에 대한 지침은 `nginx.conf` 템플릿 파일
 
 <mark style="background-color:yellow;">**(2) PHP 구성**</mark>
 
-Linux 배포판에 해당하는 `www.conf`  파일을 편집 하고, 다음 구성이 설정되어 있는지 확인하거나 샘플 파일(`/etc/php/X.Y/fpm/pool.d/www.conf`)을 Linux 배포판의 해당 위치로 복사합니다.\
-(`www.conf`  파일 위치 : `/etc/php-fpm.d/www.conf` 또는 `/etc/php/X.Y/fpm/pool.d/www.conf`)&#x20;
+아래 **\[www.conf 설정]** 이 설정되어 있는지 확인하거나, 샘플 파일(`/etc/php/X.Y(버전)/fpm/pool.d/www.conf`)을 `/etc/php-fpm.d/www.conf`로 복사한 후 Linux 배포판에 해당하는 `www.conf`  파일을 편집합니다.
+
+* `www.conf`  샘플 파일 위치 :  `/fossid/setup/templates/www.conf.dist`
+* `www.conf`  복사 위치 :  `/etc/php/X.Y(버전)/fpm/pool.d/www.conf`  또는 `/etc/php-fpm.d/www.conf`
+
+```
+sudo cp /fossid/setup/templates/www.conf /etc/php-fpm.d/www.conf
+vi  /etc/php-fpm.d/www.conf
+```
+
+\
+\[**www.conf 설정]**
 
 ```
 user = www-data
@@ -318,8 +328,7 @@ listen.mode = 0660
 ;listen.acl_users = apache,nginx   <-- make sure it's commented out.
 ```
 
-
-
+\
 PHP의 올바른 버전을 확인한 후, 해당 버전에 맞게 `listen = /run/php/php<버전>-fpm.sock` 항목을 수정합니다.
 
 예를 들어, php 버전이 8.3라면 다음과 같은 줄을 작성해야 합니다.
@@ -330,6 +339,7 @@ listen = /run/php/php8.3-fpm.sock
 
 phpX.Y-fpm 서비스가 실행 중이고 www-data 사용자가 접근할 수 있는지 확인하세요. 일부 시스템에서는 서비스 이름이 php-fpm과 다를 수 있습니다.
 
+\
 \
 그룹 소유권을 변경한 `/var/lib/php`후 php-fpm을 다시 시작합니다.
 
