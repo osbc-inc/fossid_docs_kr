@@ -403,6 +403,8 @@ sudo vi /etc/php-fpm.d/www.conf
 \
 \[**www.conf 설정]**
 
+PHP의 올바른 버전을 확인한 후, 해당 버전에 맞게 `listen = /run/php/php<버전>-fpm.sock` 항목을 수정합니다.
+
 ```
 user = www-data
 group = www-data
@@ -413,8 +415,7 @@ listen.mode = 0660
 ;listen.acl_users = apache,nginx   <-- make sure it's commented out.
 ```
 
-PHP의 올바른 버전을 확인한 후, 해당 버전에 맞게 `listen = /run/php/php<버전>-fpm.sock` 항목을 수정합니다.
-
+\
 예를 들어, php 버전이 8.3라면 다음과 같은 줄을 작성해야 합니다.
 
 ```
