@@ -397,7 +397,7 @@ d /run/php 0755 root root -
 
 ```
 sudo cp /fossid/setup/templates/www.conf /etc/php-fpm.d/www.conf
-vi  /etc/php-fpm.d/www.conf
+sudo vi /etc/php-fpm.d/www.conf
 ```
 
 \

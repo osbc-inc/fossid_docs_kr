@@ -312,7 +312,7 @@ HTTP를 활성화하는 방법에 대한 지침은 `nginx.conf` 템플릿 파일
 
 ```
 sudo cp /fossid/setup/templates/www.conf /etc/php-fpm.d/www.conf
-vi  /etc/php-fpm.d/www.conf
+sudo vi /etc/php-fpm.d/www.conf
 ```
 
 \
