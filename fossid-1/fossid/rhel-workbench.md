@@ -42,7 +42,7 @@ SELINUX를 비활성화한 후 시스템을 재부팅하세요.
 sudo vi /etc/selinux/config
 ```
 
-FossID에는 아직 SELinux 정책이 없기 때문에 비활성화 필요합니다.
+FossID에는 아직 SELinux 정책이 없기 때문에 비활성화가 필요합니다.
 
 
 
