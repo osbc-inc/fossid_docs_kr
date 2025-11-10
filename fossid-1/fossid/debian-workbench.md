@@ -83,7 +83,7 @@ sudo add-apt-repository ppa:ondrej/php -y
 
 ***
 
-### <mark style="color:$info;">\[Deliverables 접근]</mark> <a href="#access-deliverables" id="access-deliverables"></a>
+### <mark style="background-color:$info;">\[Deliverables 접근]</mark> <a href="#access-deliverables" id="access-deliverables"></a>
 
 FossID deliverables에 대한 접근 정보는 **delivery mail**에 포함되어 있습니다.
 
@@ -270,7 +270,7 @@ location = /index.php {
 }
 ```
 
-`fastcgi_pass unix:/run/php/php8.2-fpm.sock;`부분에서 php의 올바른 버전으로 변경하세요.
+`fastcgi_pass unix:/run/php/php`**`8.2`**`-fpm.sock;` 부분을 현재 시스템에서 사용하는 **PHP 버전**에 맞게 수정하세요.
 
 예를 들어, php 버전이 **8.3**라면 다음과 같이 변경이 필요합니다.
 
