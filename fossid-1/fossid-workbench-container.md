@@ -7,13 +7,13 @@
 ### <mark style="background-color:$info;">\[목차]</mark> <a href="#table-of-contents" id="table-of-contents"></a>
 
 * [소개](fossid-workbench-container.md#introduction)
-* [필수 조건](broken-reference)
-* [이미지 관리](broken-reference)
-* [배포 옵션](broken-reference)
+* [필수 조건](fossid-workbench-container.md#prerequisites)
+* [이미지 관리](fossid-workbench-container.md#image-management)
+* [배포 옵션](fossid-workbench-container.md#deployment-options)
 * [구성 관리](fossid-workbench-container.md#configuration-management)
-* [문제 해결](broken-reference)
-* [프로덕션 배포](broken-reference)
-* [추가 자료](broken-reference)
+* [문제 해결](fossid-workbench-container.md#troubleshooting)
+* [Production 배포](fossid-workbench-container.md#production-deployment)
+* [추가 자료](fossid-workbench-container.md#additional-resources)
 
 ***
 
