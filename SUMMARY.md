@@ -83,3 +83,4 @@
   * [Debian의 Workbench 서버](fossid-1/fossid/debian-workbench.md)
   * [RHEL의 Workbench 서버](fossid-1/fossid/rhel-workbench.md)
   * [문제 해결](fossid-1/fossid/undefined.md)
+* [FossID Workbench Container 배포](fossid-1/fossid-workbench-container.md)
