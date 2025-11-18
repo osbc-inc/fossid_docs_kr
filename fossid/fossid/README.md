@@ -4,9 +4,8 @@
 
 
 
-25.2.0 버전에 대한 패키지는 하기 링크 또는 FossID Delivery 사이트를 통해 다운로드 가능합니다.
-
-\- [https://fossid.osbc.kr/download/byunghoon/fossid\_25.2.0.zip](https://fossid.osbc.kr/download/byunghoon/fossid_25.1.2.zip)
+25.2.0 버전에 대한 패키지는 하기 링크 또는 FossID Delivery 사이트를 통해 다운로드 가능합니다.\
+\- [https://fossid.osbc.kr/download/byunghoon/fossid\_25.2.0.zip](https://fossid.osbc.kr/download/byunghoon/fossid_25.2.0.zip)
 
 \- [https://vault-apac.foss.id/delivery/](https://vault-apac.foss.id/delivery/)
 
