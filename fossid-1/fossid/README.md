@@ -17,5 +17,5 @@ hidden: true
 &#x20;
 
 * 하기 링크를 통해 새로 추가되거나 변경된 기능을 확인할 수 있습니다.  \
-  \- [https://www.auditoss.kr/help/en/webapp-release-notes/index.html](https://www.auditoss.kr/help/en/webapp-release-notes/index.html)\
-  \- [https://www.auditoss.kr/help/en/webapp-api/changelog.html](https://www.auditoss.kr/help/en/webapp-api/changelog.html)
+  \- [https://fossid.osbc.co.kr/help/en/webapp-release-notes/index.html](https://fossid.osbc.co.kr/help/en/webapp-release-notes/index.html)\
+  \- [https://fossid.osbc.co.kr/help/en/webapp-api/changelog.html](https://fossid.osbc.co.kr/help/en/webapp-api/changelog.html)
