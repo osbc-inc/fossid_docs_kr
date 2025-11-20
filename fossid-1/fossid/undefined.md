@@ -39,6 +39,13 @@ php --ini
 * zip
 
 \
+필요한 모든 확장 프로그램이 로드되었는지 빠르게 확인하려면 다음을 실행하세요.
+
+```
+for ext in curl intl json ldap mbstring mysqli mysqlnd pdo_mysql posix xml zip; do php -m | grep -q "^${ext}$" || echo "Missing: $ext"; done
+```
+
+\
 다음 오류는 `php-intl`패키지가 설치되지 않았기 때문에 발생합니다.
 
 ```
